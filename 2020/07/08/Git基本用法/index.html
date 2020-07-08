@@ -6,12 +6,12 @@
   <meta name="keywords" content="">
   <meta name="description" content="Git基本用法 | Knsec  |  低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="基本设置1git config --list  配置用户信息12git config --global user.name &quot;XXX&quot;git config --global user.name &quot;XXXXX@gmail.com&quot;  版本初始化1git init # 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹  将文件添加至缓存1git add . # &#39;.&#39;为将所有文件添加至缓存">
+<meta name="description" content="基本设置git config --list 配置用户信息git config --global user.name &quot;XXX&quot; git config --global user.name &quot;XXXXX@gmail.com&quot; 版本初始化git init # 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹 将文件添加至缓存git add . # &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git基本用法">
 <meta property="og:url" content="http://knsec.github.io/2020/07/08/Git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="Knsec  |  低调求发展 - 潜心习安全">
-<meta property="og:description" content="基本设置1git config --list  配置用户信息12git config --global user.name &quot;XXX&quot;git config --global user.name &quot;XXXXX@gmail.com&quot;  版本初始化1git init # 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹  将文件添加至缓存1git add . # &#39;.&#39;为将所有文件添加至缓存">
+<meta property="og:description" content="基本设置git config --list 配置用户信息git config --global user.name &quot;XXX&quot; git config --global user.name &quot;XXXXX@gmail.com&quot; 版本初始化git init # 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹 将文件添加至缓存git add . # &amp;">
 <meta property="og:locale" content="Zh_CN">
 <meta property="article:published_time" content="2020-07-08T15:40:16.000Z">
 <meta property="article:modified_time" content="2020-07-08T16:24:54.173Z">
@@ -250,35 +250,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"XXX"</span></span><br><span class="line">git config --global user.name <span class="string">"XXXXX@gmail.com"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="版本初始化"><a href="#版本初始化" class="headerlink" title="版本初始化"></a>版本初始化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init <span class="comment"># 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="将文件添加至缓存"><a href="#将文件添加至缓存" class="headerlink" title="将文件添加至缓存"></a>将文件添加至缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . <span class="comment"># '.'为将所有文件添加至缓存中</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="为修改过的文件添加说明内容"><a href="#为修改过的文件添加说明内容" class="headerlink" title="为修改过的文件添加说明内容"></a>为修改过的文件添加说明内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"这里是说明"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回滚至某个commit的Sha码"><a href="#回滚至某个commit的Sha码" class="headerlink" title="回滚至某个commit的Sha码"></a>回滚至某个commit的Sha码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^       <span class="comment"># 退至上个版本</span></span><br><span class="line">git reset --hard HEAD~n      <span class="comment"># 退至n次提交之前</span></span><br><span class="line">git reset --hard commit_id   <span class="comment"># 推至指定commit的Sha码</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="创建SSH-KEY"><a href="#创建SSH-KEY" class="headerlink" title="创建SSH KEY"></a>创建SSH KEY</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx@gmail.com"</span> <span class="comment"># Windows系统使用git bash运行此命令</span></span><br></pre></td></tr></table></figure>
-
+        <h3 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h3><pre><code class="bash">git config --list</code></pre>
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><pre><code class="bash">git config --global user.name &quot;XXX&quot;
+git config --global user.name &quot;XXXXX@gmail.com&quot;</code></pre>
+<h3 id="版本初始化"><a href="#版本初始化" class="headerlink" title="版本初始化"></a>版本初始化</h3><pre><code class="bash">git init # 初始化本地新仓库，并且会在工作目录下生成.git的隐藏文件夹</code></pre>
+<h3 id="将文件添加至缓存"><a href="#将文件添加至缓存" class="headerlink" title="将文件添加至缓存"></a>将文件添加至缓存</h3><pre><code class="bash">git add . # &#39;.&#39;为将所有文件添加至缓存中</code></pre>
+<h3 id="为修改过的文件添加说明内容"><a href="#为修改过的文件添加说明内容" class="headerlink" title="为修改过的文件添加说明内容"></a>为修改过的文件添加说明内容</h3><pre><code class="bash">git commit -m &quot;这里是说明&quot;</code></pre>
+<h3 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h3><pre><code class="bash">git log</code></pre>
+<h3 id="回滚至某个commit的Sha码"><a href="#回滚至某个commit的Sha码" class="headerlink" title="回滚至某个commit的Sha码"></a>回滚至某个commit的Sha码</h3><pre><code class="bash">git reset --hard HEAD^       # 退至上个版本
+git reset --hard HEAD~n      # 退至n次提交之前
+git reset --hard commit_id   # 推至指定commit的Sha码</code></pre>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="创建SSH-KEY"><a href="#创建SSH-KEY" class="headerlink" title="创建SSH KEY"></a>创建SSH KEY</h3><pre><code class="bash">ssh-keygen -t rsa -C &quot;xxxxx@gmail.com&quot; # Windows系统使用git bash运行此命令</code></pre>
 <blockquote>
 <p>创建后路径为:             C:\Users\自己的用户名.ssh目录</p>
 <p>其中id_rsa为私钥 id_rsa.pub为公钥</p>
 </blockquote>
 <h3 id="登录Github"><a href="#登录Github" class="headerlink" title="登录Github"></a>登录Github</h3><p>登录之后点击头像，Settings &gt; SSH keys &gt;New SSH key</p>
 <p>将公钥的内容复制至github中。</p>
-<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><h4 id="在Github中创建一个仓库，将仓库地址复制，添加远程仓库"><a href="#在Github中创建一个仓库，将仓库地址复制，添加远程仓库" class="headerlink" title="在Github中创建一个仓库，将仓库地址复制，添加远程仓库"></a>在Github中创建一个仓库，将仓库地址复制，添加远程仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/Knsec/Knsec.github.io.git</span><br></pre></td></tr></table></figure>
-
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><h4 id="在Github中创建一个仓库，将仓库地址复制，添加远程仓库"><a href="#在Github中创建一个仓库，将仓库地址复制，添加远程仓库" class="headerlink" title="在Github中创建一个仓库，将仓库地址复制，添加远程仓库"></a>在Github中创建一个仓库，将仓库地址复制，添加远程仓库</h4><pre><code class="bash">git remote add origin https://github.com/Knsec/Knsec.github.io.git</code></pre>
 <p>推送至远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">git push -u origin master</code></pre>
 
       
        
@@ -328,6 +319,20 @@
 
         /*高亮代码块行号*/
         
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
 
         /*访问数量*/
         
@@ -347,6 +352,38 @@
 </script>
 
 <!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
 
 <!--自定义样式设置-->
 <style>
