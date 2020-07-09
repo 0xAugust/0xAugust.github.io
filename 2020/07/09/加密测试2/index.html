@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Centos7初始化配置 | Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content=" Centos7 , Centos7配置网络 ">
-  <meta name="description" content="Centos7初始化配置 | Knsec         |       低调求发展 - 潜心习安全">
+  <title>Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content=" Linux , 渗透技巧 ">
+  <meta name="description" content="Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
@@ -312,9 +312,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Centos7初始化配置" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-加密测试2" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Centos7初始化配置</h1>
+        <h1 class="article-title">Linux利用别名抓取账户切换时密码</h1>
     
     <div class="article-meta">
         
@@ -324,7 +324,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="杂记">杂记</a>
+            <a  data-rel="手法技巧">手法技巧</a>
             
         </span>
         
@@ -332,21 +332,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">Centos7</a>
+            <a class="color1">Linux</a>
             
-            <a class="color2">Centos7配置网络</a>
+            <a class="color5">渗透技巧</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 20:57:04'>2020-07-09 20:35</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-09 23:29:58'>2020-07-09 20:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:213</span>
+        <span>字数:9</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -365,7 +365,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事由："><span class="toc-text">事由：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装系统镜像后使其可以上网"><span class="toc-text">安装系统镜像后使其可以上网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换yum源"><span class="toc-text">更换yum源</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -381,39 +381,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="事由："><a href="#事由：" class="headerlink" title="事由："></a>事由：</h3><blockquote>
-<p>今天搭建环境打算做实验，下了一个Centos7镜像打算安装在虚拟机，供后续的测试。</p>
-</blockquote>
-<h3 id="安装系统镜像后使其可以上网"><a href="#安装系统镜像后使其可以上网" class="headerlink" title="安装系统镜像后使其可以上网"></a>安装系统镜像后使其可以上网</h3><blockquote>
-<p>是没有网络的</p>
-</blockquote>
-<p><img src="/../images/image-20200709203922198.png" alt="image-20200709203922198"></p>
-<blockquote>
-<p>要配置我们的虚拟机环境首先当然是给它通上网，之后才好配置一下国内的源</p>
-</blockquote>
-<p><img src="/../images/image-20200709204106787.png" alt="image-20200709204106787"></p>
-<blockquote>
-<p>可以看到有两个设备，虚拟机一般为ens33</p>
-</blockquote>
-<pre><code class="bash">vi /etc/sysconfig/network-scripts/ifcfg-ens33 # 配置有线网络</code></pre>
-<p><img src="/../images/image-20200709204354388.png" alt="image-20200709204354388"></p>
-<blockquote>
-<p>直接把ONBOOT改为yes即可</p>
-</blockquote>
-<pre><code class="bash">BOOTPROTO=dhcp    # 启用协议 static为静态ip dhcp为动态ip none为无
-ONBOOT=yes        # 系统启用时是否激活</code></pre>
-<blockquote>
-<p>随后重启网络</p>
-</blockquote>
-<pre><code class="bash">systemctl restart network.service</code></pre>
-<p><img src="/../images/image-20200709205307149.png" alt="image-20200709205307149"></p>
-<h3 id="更换yum源"><a href="#更换yum源" class="headerlink" title="更换yum源"></a>更换yum源</h3><pre><code class="bash">yum install -y wget    # 下载安装wget
-cd /etc/yum.repos.d/
-wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-yum clean all    # 清理yum缓存
-yum makecache    # 重建缓存
-yum -y update    # 升级Linux系统</code></pre>
-
+        <div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">您好, 这里需要密码.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="1d49acd73e42ef4a59456b69e0debac2341730d103c9e9418ecd517d3a3f89f9">4ed9f534fb20f52f9a0145204ab25467e8cc0d4d7c7632b9c44012db790ac92594d90ba6fc338293b261fca7e4f77a4f6fe14b639c4dd11da99c0bfa2bc26d553bdb7ccd26f984c2f4fd00cbea435a7f6fc3aff88c5cd4eec6b1ca62305609df8a9fb57848b7b8cde72464e201f0db4435eafe6c45fc9025f81a294b63a267dc3a101cde8dab5830c683db1fdd9fbd1dbac0bf192d67f0508dafb5746d680baf522f01ad788bab0ec0bfbdccc3f91a40b7eb696fb41529b55bb419346ae556192922d6428ec5fcba8db9c307e8387bd8de5a1ef256ed19bfa2f1a399e686c79631e67fb1616c322bf2c5671b141cbde6dce6d9bad68ebcea004b31abf5bdaac5e921272bb7fca1c9ef56db251eb8ac7dfc4c0f71ac1ac39e9d203e4dc61a07f708a38cd6b08ba75330c649f8fa3b2b11ad4f95c72ba59d8dfa75711620bcb1604c2ab652112fe45f8ab657fd107d6d3e29404645b56efdb4c3272956d8d9fc0a72d296095cc5377bc8cfccabf42084347170f98a3678d2ca9daf599efa01fad59ff037ad6a0d8203eff43ca266118a4ae356a46c4bddb8019e0316d1f2f9e69fe0cc4e15a2de17218b85d8913c936af7b8ad39700939279bc21c7496bb5a84a576eee2260006255ddf1c8b9725f8971bd09ef7019d90e87ba16bf8f9a49464ebe8d656fd64cf3eea3d47cdc7ee6635b5b613b23b405422cdd25131960b331fd12910ae49dde8c9c623426b5c8b5d1825f4ff1d9913cea7416212bf78d2ac1bc2e055dc8656b104fd7375f9560ee102170bddcf0fc76da464ac1c8dc991cdc81588c319db5da303f0cec47da0ab4a9c7c100f3f1f64b2b9d5adb170d0b123623259bffed10436d8871625b32121278eec3c194a8ab9a4ddc5a74987e0e2b2b6a24e9614ba2a1bdec16fce8630a364ec31e6801adae62fab49119190cce2d438d3fe2cdad7a9bac79ab07230f77b00287111482378662934ff987129d55c605a281254007b7f770be1a6f5f26da7524407e5f72a800fe9cd73b8f8b5537a7ad7a6cca2912eeed54f0debecf56df5505ca0bbe087a7e8123e2cef957c1cec0edd26e9e4ed9548e13657741cfe5db896224fa69742146857f79daf32786f8baad5c3ddbecb78b4bdffad6056885b603b23f83830a90576d4339517215d5b1c89479bc5a6f754003339e6798de841329786ae8231cedf9b9e5a89e390cf05426f9e8d60ac2d0736e5826e44da9fb297ab5c0f4761dbb155a620ff998fd9152ce469b20114b290b5a00c53c0a0b08164b1b4d1a1db1f5e1e22493e94ae776533a786ab54fa4ec2c9723234ed6bbfb1533b5fd03547dcd653047f611619064075fedc53726032ec80a0c2380da16b9c6ee9658dbca42d99abb16cd4ae55134a5eb40547a4e54add974e877c7386c65dda42280b945fb83c058a0f0dc610bf8d37c5001b8802850cd37fc88c5bdfb2ba437c169f580292d20cf9624ddb5aa708363fe096ec46955072d87dec429a8d16ae37e9ddeaa1990608ab951d46cbd1cfaa95a6e61d8a8da0bbcc27282597ae4cfcff0967b94e12627f858f362791ae791cc7b2ca655601e6d438228def7e1f1bace1b152bc9e8776d94d94de5121cf968339da9f5018d311cb5da27b160c83acd8860190468ef16194f140633ad42e3e730a07d547927a0bdbbccf44763aa3fbcd3cb6330326bed62fe22e9306e9dbd798f87b49d5a2968784bb479553e35aa4dc67fcee5dfd133b4521a75d85c04a18952a71043325526676564289ed25f711cea13fe92205f201fc0ceb56b2182726eebe41048637256c25bdc3a13304610e896a30abdd2d83d5144fecff7478c0311b7cf43688ee72b4792a6006d557e18e51f94eff40b4ee105163c7e2697599a26b7e6b327575e59f10b5dd770c6f1a42a4d6c760853858a26e075c664970afb53c5d9e362aee799b55271e13676e82ea007eaa5e86471ab1dd4f3515d2365a5f02352dd43f055ae2dfb2e1dfa30b9f7282731e32dea01835edec2d22d4af7d43f3e7ff0a1308194b559ff138892792a2c490f906da039c88d89c2fc365773318297fcaeb694614c725358c95164f930dbfe57a62942edee4a22fe62c8be992603c95587be295fa665d539b37ae8c19677b32362ae58ed60fb1e7630d02fc8ff9ae1fc98304f3a28e028f1349506c3dfc2d8405cb9fa512e2d4e271a43e0c7ea81d796269654a2ac914f1d78e49a1fe030b886b375d442307a001addb158813f5691626676f12553f94c7a274b3eee39561e644c3bd06b8f61c4e3e32a3930a7d44f561705ba4ab199a6241970462c8382529587a6b795e66704ec91113bb63f7b7c02df573b04035145459ec38ac178e23bcb9f73408f71c593401f1dc0826d6b9fd7ed74751fe88969e46c9dddde7c0ee35686d601b8e35d78b41cb0fc0b7dcbd9a3b8ef37d06a8af619d95f28ceb57a5b067dce6810d6565fe035bd8eb9301a35632029f52fb4549492d6709150ddbe2739316ef4cf90b7e598f6c2187412c71e0d6fa9ef2fb3b0ce3cdbd67d2178084ddb7943b19a47c5e3b6b91ddaab25779c454e413119726e44f7125dbca581deab3833394b1f91b22dfad82997c15fb30ef9eff0fcaabc6a39ecc0255fd58a41b1bc02927c9eb4a249590406ada06058c85c3a83babf471daba69435a337c230ad02bc524289e9431c4039726df6a301496daabd84da41044ccad8aa110710c01f1d14a584dbf7e40d32a1ac838193394fe3229c4ad42705a7e5a20ee782d19882dba019f3b03ee060c22e826ee173f25913c606c0efc1883262c654e005799cda8101e057e6a305e0f011131d48e7c494ed285ffee257f55c89fbb96d4da6e14b8bdb16b65061fc16ec9641639360d831d6c7259be2b1aacd44a6ce30d1966ce8ff936bf3b8bcf522ea2f2dc2214d943b19563e7a80c9c0c19942c1df82b54361dcffda1a3c63312b5f247deeed5024ea0ea625ccfa7551a04228884ad906463cbb2c7ae1099ce21ad4b02c4f92494b1098a995c96f5243a52237c2dc23fc7b6ebbe1dfdf8877898b6c5c3c1ae1010b9ad9d7584603939fceed8b6848e6c45dd9b6a23604b3f189cf55950950428041be3e34aca9cf99fab9e76f49583ffe7767a10dd310fc2c80266316eaecb4b61ae45008a0d1fc9c974d1497ffa62896e6449994d5ae3cba63463ab8a8d61b3f0eb4b8a246dde083f4516ac0d04b678bbf6fed654bade1b4493790ebb55c74de99c27bfd0363b54889c938d52baf9a28440df150c7998bd0a42210932e3bfb1a270e1c22cfd65bec644a5b13d65470ecda759ac51efeba5c9c8d71a4cc10b767d71cc1a5d37668dc708c6053dff83eb5c58bc0e9d919510497803a212cd7b8d9a0d369cf05d2de7149bb6f5840dd6d3ab0370a7f2c6ba7c73b74b23ea0ec2382565b25ed39f64d133137e0e7e2ec2b5d1e64a66a6835fea5ec50d6bbaaa9203263ea3c7c388a4283018521d4aa773be908b8f63f1872b5e26cf4959b57549c68f2156df5ea009920d806a8b3d001e2720b8dc149cb952dfe46183efb07bb475e75cfb0e12ea1e31dd062a1e492bd4efb68af4958bd44d34183cb838c41483263aa31288eed388d531513788e9a5441354ea062c02adfd7fe10c8273134dec822439e5e3c374c5bf4f5dcb9c46689b8834c9b6c8c465d7d892ac5e5c35df74e7f4a5395308969d9c95d3f75c8773dd21da3f788d34d5b319b22de083a29f6dc615cebb9d9a644a393fa708f7c8eed2bd8086ae6aa3fef93ee36d8b5d00c527255847fec0de838f769173c1fe726b58d21e3985f9c84e89a05238e8623885ff8151904c44fdb334f91344b81d47f0c7c03a652d44b53d0ff5436e9aa2239c5d020dbe3107560df993424a1dc4ca35d56710a6e67272923c621c03014944a3b5527453a22bbce549a756b35fa2225d15df12fb1c742bdced93733163433686196520d729786231f0c09ab78c962e801b7b4951747e56559d4b4df2aa19581b8223279f27f25bf53ca52f11cdaa6c6c55c88276080c17d6c40cdfd3f5c003fb89133d4153eff9d1c81fa12dae31f4b78a4b4cf0499d5bac854a55361e8d3c58566507f7ed8af7d6c85274b9c755d6ecb46d5b07a3f71ec4d7fb6e7368a423c9ada63562e22349cd45454b685560bfec017cfb380ce0823992f63b8642f1121958b3342cb1a7558d5161580ee08ce64a9a967f5cc6f4455bc4eaf1a1b7a9f6b051bc0c57ee1f9263adc6debd38f68cea914e7cc674b5fb2037779a5a6b4f26cf44d722e7174b183e1b9cbfb644c6803ac18cbadba3e2d10604b7fc829eb5e3d24d6af0fac4c9ec6904d927d8489874220684b96a16e6777905e49c035ec10a4ee6464803b64b216aa7552f22b333ed7bad0ca2b4bd665014a42afe8cd0442696298deceb9b93bea5357c839f0d603ae02c08fa14d3052a351c91f64c81c57703c40f94d11c506de1f8ad8bf6f6bc95fee2efc4fc965c283f463bf25660ea7239b5164d0f3617ddfb2d951f6bca35c75c1628cb13feb5eda7c65b20b2b4ccfe2baeabbbb6032e5cb46f0386676b2158f1955c7299b94318f4fd8028657ba0379785a201ed5f4161cef0c6b9c285a50d30405fde1e5c0e2824ddefea66f70dc81c7dd5622e34e388753cc7839d690d04ae15e935ddae9f6876790e84846744422fbcc57c76d804d44c6a9838dfd52f3a6948a4e44d6e9195b63e18e7575256bc166f419259371e070ffd405ee8283a9cc4033ddbfa0362e91ff52a96d20f1af7096a40f385e03505dc1b86a017c7f96f9dd574fc3b5e7d9d7c5a28cf225ee34f590352b02aca062b145871bbefbe715c90560d701d4d41099eb8c8381f5e94e4854cd6fcd547529b9f2bf8705061faf60577fb667f5059c04d6cf6995b9220d2c631b43836322c3afd14ab96566d957dc3aedcbb8affea9753b57298353b2c0d2d81ea7648fb8f66711da4a9aadf5e27b002a612eada644bdb49c5db6a7ca0606bfd1ec7dcfb1f71bac9f3754b6a489f4729ce54ba480f318914f4da1d734e978d87eb8a82c58558ad92ca6b4e41f6cd2baa7e8b907c0c7b97ceadcf18635906093e4e2adfb8d12e54a2fbc57cb4ac6bdcbae3cba759212eb22f148f2c9064c64b463b6a80b9e5194c21e52e9d52cf94cd0b21a4ed02170b5e96cb949acf9cf01938bc92a04105c17e40c4aafc9f821931d383264504122ddaf116924a58f6921047822a7d6611a2b6f31e39ca654102176f3773ef4d9d64261de74ec9a34d6fecc5241d20a32e56ae943cf253e3061ea5d7b5103c5e2c601d36958e303764cdcbad2b894836752afe609872560cfb3d537dcd0fee595ed43c0d3a3d35784b2df28ee39f04b2121fd1239d05d1c26d297ab81164d5c5805b9ba6ee23bf67e09bb9d037e2ea00b758247c3d1795517a140b808425696b0e45bf1e468a7bcf69b46325de11883c66c1c5b10fa7f6f8acbf55617035c729fbd6f625ae8f1cce43c1b79c4e99cd518afd19faafec8526cf913a6c86545b5f48fe47bbea87dbc4118e46af8d0259f974b0961836a83c7066f07fbcbd44d153556aad1ccc716aaf0ecf9ec9164bb9f17f5f1c787b2072ae71680f486593c1a9d309dc6e1f7c1696b815f91833c101398ff85efd5ac2580cda1ed34a3d7a0aa1b9c00d6a8ff64eb289ede65f6be85d2c8f98b818ddde3729e42b47166b86b91c812be5d0c6d932868b58f8e5f4d75944fe7f2929b72be3c8c4b324d6e73d859a85aee830f86264ae1b07ed592c27cb7c3231f36387cb47f304bc9e4b8dcd78179c46b7107ed2e3db1a0750ec58de2a98d66331eefeaa16f4c9a5b99c13c32e18bb6f76a708dac6965383eff52fbb193ced46b6873dd50926a38c4769354b3e12bbfc27f679bff169708619a847e37c8e73816de3850c52d6928a4ab35401357868f3b2c2cc8a9016844a164198da05f5ec090e693f8eec0ed3ed97da33a8a8ee4767594f65217fbf0b9354ef2448ef563d7b31b7f4c5f404568a2d0b19d77f0684fd614af97d2c5cc53a4890291705a91267637ac0fb4a57f3b063fad888e799c84c28b43dbcc2ad6fd3b72821ffb410b30c3793ae3f3a4915924dd109a92dd578992cebaa40872392bb19c8ef2715e12ac1a704fcff27e648721b400cc1e91fa60e91f990d2461f33fddafcd445695000d42ff78db180e480cf65890f5e68d914a956038c6bbc89262463dca4eaeae8ef8df96cf46032f958c2deb9f36e923f53ffcde91a7e2afc79a1933ea4b060f64f605dd04fa2a94091ff1932cd3a22b71942658ef7726b95d9364996cb44c1426993ab62a3f956bc937afeecd274a9a231f422186c65f82fcc670a9accdd19aaa5e44747eee943efe2617f07d49b0762d70c0f54222c02384631d1b1e81fc7071a7528ccaeabea8b1e4dadb01ecfcc547dd5f33ee736282c107b82e707ac563595f96420253510fa9b0bf11dda91b5f9ed6cd09da5f665ddf37cc0876ba109efb218fb930c7cbe16e50114bf205010972c538b944e2f736acd0d9cd41b8e10fd6f3ad17dda5507c9511467fa5d51f95b3dd5befb3340f4d53f039c1416034ac82ffcc13354fda07cd7deda61c4da66546e3b476cfee1b86b3498c1bc35f60b0c27489fdf88b117d471e3905ef7bbcf379682b901e98c7fa1ade3495f13fa59c75785bc8d713642906aca6cfa9f4d882928d6d311a2749ad4f3377c7301ceecce7e3900960bcd31984daba44d01f58041dbad12fbdd05eef0d23d76b915900d7f7782998f8bdede6331d122adcf78df5ac4634de33cd14f2d09d7e060a181ffbb02289f7e77af7d22563835abf26fdeb0cbd757245e4882c5d437921576c44c3a9aaf5624f86a8fc6921e7299feb976f990c0260a696634c20944f4d4bb1fbb6c821c9b2e00314b37fa9fbd72b0b00a8c9298f4fecb3ff9b85575a0b8e4c1e6d552026306e13df2bee1a739f8c975d443d2bbf76b5ca97d303737e63f3a33e4aef5dc47fe7b0bdfdcecd577bc0938be646f66eb3f00a770b0d7f525416736cdc3325bac1a5e8b8adf984d74bcfb5b2a752f497fdd097cfcaf8a05a47f9a17643cd37225541338d90d9fdb6d89a5b4da94e8be7192c47323f1391158bde83b8ec8b8f4d1b665a1c5e86795446a059892884c354ba14827cb34f80225a67f24b13db8ce4a2ab3bc036392d6cd76ec3af6ed6de9fb738561fbb849f304a9c6bea7a53febf69496621a6c13dc618b32399211400e84d7cb8ef184c8e422472410d9b8ca8a5c6d51705d7036f43cdfb3911f57033a371c4383427a1c6fe0e204906978bc82d5534f5ad08f1d24b48d2d3f43c86076c1d1ef6ba565c9d19ee5326bc50a39772cd760b09c7aa4d09afb340260ababe46b27ad95d2d4433333cae06341a54061ae413743f9b33a8b6696577348d6985718f5b0c06e53f46528039592b476cde1</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
        
     </div>
