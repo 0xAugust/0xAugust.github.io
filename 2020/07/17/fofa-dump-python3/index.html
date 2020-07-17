@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Knsec         |       低调求发展 - 潜心习安全">
+  <title>fofa-dump_python3 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content=" python3 ">
+  <meta name="description" content="fofa-dump_python3 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -417,12 +417,60 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-fofa-dump-python3" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于作者Knsec"><span class="toc-text">关于作者Knsec</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#攻防测试手册"><span class="toc-text">攻防测试手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内网安全"><span class="toc-text">内网安全</span></a></li></ol></li></ol>
+        <h1 class="article-title">fofa-dump_python3</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="脚本">脚本</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">python3</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-07-17 20:53:16'>2020-07-17 20:51</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#fofa-dump"><span class="toc-text">fofa-dump</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改编后："><span class="toc-text">改编后：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改编后完整脚本："><span class="toc-text">改编后完整脚本：</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -435,94 +483,324 @@
     }
 </style>
 </div>
-            <h1 id="关于作者Knsec"><a href="#关于作者Knsec" class="headerlink" title="关于作者Knsec"></a>关于作者Knsec</h1><blockquote>
-<p>低调求发展，潜心习安全</p>
-<p>渗透的本质是信息收集。</p>
-<p>开博客已有两天，这两天我认真思考，这个博客的文章应该怎么写？怎么样去记录我的学习路程？</p>
-<p>信安是一个特殊的行业，亦正亦邪，所接触的环境决定了我们需要学习的东西，导致目前我的知识体系有些混乱。在参考多位前辈的意见以及结合自己的实际情况，故决定创建自己的博客，将自己所学习的东西记录到博客之中，形成我的知识体系。或当自己感到迷茫或混乱时，希望自己的博客能够给自己理清思绪。</p>
-<p>关于文章，我思索良久。在目前的状态下，自己的知识、技能远远达不到信安从业者的标准。故今后更新的文章，我会向我的前辈以及网络上Micropoor、Klion等前辈学习，并记录在学习过程之中所碰到的问题以及解决方案，希望通过这样，形成自己的知识体系，并且把自己的所学融会贯通，应用到实际场景之中。</p>
-<p>在没意识到整理自己的知识技能之前，个人也通过各种渠道收集了一些工具、脚本、手法技巧等，并且某些工具也经过自己的实际需求进行了改编。非常抱歉的是，我没有完整的记录作者的名字或出处。如果您在阅读文章时，发现我使用的工具没标明出处，并恰巧您知道时，方便的话请联系我<strong><a href="mailto:Knsec@protonMail.com">Knsec@protonMail.com</a></strong>，非常感谢！</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>原版：<a href="https://github.com/qiygan/fofa-dump" target="_blank" rel="noopener">https://github.com/qiygan/fofa-dump</a></p>
 </blockquote>
-<h2 id="攻防测试手册"><a href="#攻防测试手册" class="headerlink" title="攻防测试手册"></a>攻防测试手册</h2><blockquote>
-<p><strong>PHP 安全新闻早 8 点课程系列高持续渗透–Microporor</strong></p>
-<p><a href="https://micropoor.blogspot.com/2019/01/php8.html" target="_blank" rel="noopener">https://micropoor.blogspot.com/2019/01/php8.html</a></p>
-</blockquote>
+<h2 id="fofa-dump"><a href="#fofa-dump" class="headerlink" title="fofa-dump"></a>fofa-dump</h2><p>Fofa Pro Api 下载工具，通过 api 进行下载数据，将数据保存为 csv 文件。</p>
+<p>可自定义配置导出字段名称、每页数量以及批量下载数据。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li>环境要求：Python 3</li>
+<li><strong>使用之前需要配置用户名和密码覆盖 <code>fofa_name</code> 和 <code>fofa_key</code> 替换为用户自用信息</strong></li>
+<li>使用 <code>pip install -r requirements.txt</code> 安装依赖</li>
+</ul>
 <blockquote>
-<p><strong>包含 100 课等经典攻防教材、安全知识</strong></p>
-<p><a href="https://github.com/Micropoor/Micro8" target="_blank" rel="noopener">https://github.com/Micropoor/Micro8</a></p>
+<p>requirements.txt 内容如下：</p>
 </blockquote>
-<blockquote>
-<p><strong>红蓝方攻防手册</strong></p>
-<p><a href="https://github.com/infosecn1nja/AD-Attack-Defense" target="_blank" rel="noopener">https://github.com/infosecn1nja/AD-Attack-Defense</a></p>
-</blockquote>
-<blockquote>
-<p><strong>红队资源列表</strong></p>
-<p><a href="https://github.com/yeyintminthuhtut/Awesome-Red-Teaming" target="_blank" rel="noopener">https://github.com/yeyintminthuhtut/Awesome-Red-Teaming</a></p>
-</blockquote>
-<blockquote>
-<p><strong>红队标准渗透测试流程与常用命令</strong></p>
-<p><a href="https://github.com/foobarto/redteam-notebook" target="_blank" rel="noopener">https://github.com/foobarto/redteam-notebook</a></p>
-</blockquote>
-<blockquote>
-<p><strong>文章收集：安全部、SDL、SRC、渗透测试、漏洞利用</strong></p>
-<p><a href="https://github.com/tom0li/collection-document" target="_blank" rel="noopener">https://github.com/tom0li/collection-document</a></p>
-</blockquote>
-<blockquote>
-<p><strong>公开的文件、APT笔记、软件样本</strong></p>
-<p> <a href="https://github.com/kbandla/APTnotes" target="_blank" rel="noopener">https://github.com/kbandla/APTnotes</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Web Hacking 101中文版</strong></p>
-<p><a href="https://wizardforcel.gitbooks.io/web-hacking-101/content" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/web-hacking-101/content</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Web渗透测试笔记</strong></p>
-<p><a href="https://techvomit.net/web-application-penetration-testing-notes/" target="_blank" rel="noopener">https://techvomit.net/web-application-penetration-testing-notes/</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Web 安全资料和资源列表</strong></p>
-<p><a href="https://github.com/qazbnm456/awesome-web-security" target="_blank" rel="noopener">https://github.com/qazbnm456/awesome-web-security</a></p>
-</blockquote>
-<blockquote>
-<p><strong>渗透测试常见条目</strong></p>
-<p><a href="http://pentestmonkey.net/category/cheat-sheet" target="_blank" rel="noopener">http://pentestmonkey.net/category/cheat-sheet</a></p>
-</blockquote>
-<blockquote>
-<p><strong>渗透攻击链中常用工具及使用场景</strong></p>
-<p><a href="https://github.com/demonsec666/Security-Toolkit" target="_blank" rel="noopener">https://github.com/demonsec666/Security-Toolkit</a></p>
-</blockquote>
-<blockquote>
-<p><strong>渗透测试方向优秀资源收集</strong></p>
-<p><a href="https://github.com/Kinimiwar/Penetration-Testing" target="_blank" rel="noopener">https://github.com/Kinimiwar/Penetration-Testing</a></p>
-</blockquote>
-<blockquote>
-<p><strong>渗透测试/安全秘籍/笔记</strong></p>
-<p><a href="https://github.com/jshaw87/Cheatsheets" target="_blank" rel="noopener">https://github.com/jshaw87/Cheatsheets</a></p>
-</blockquote>
-<h2 id="内网安全"><a href="#内网安全" class="headerlink" title="内网安全"></a>内网安全</h2><blockquote>
-<p><strong>mitre 机构对横向移动的总结</strong></p>
-<p><a href="https://attack.mitre.org/wiki/Lateral_Movement" target="_blank" rel="noopener">https://attack.mitre.org/wiki/Lateral_Movement</a></p>
-</blockquote>
-<blockquote>
-<p><strong>彻底理解 Windows 认证 - 议题解读</strong></p>
-<p><a href="https://payloads.online/archivers/2018-11-30/1" target="_blank" rel="noopener">https://payloads.online/archivers/2018-11-30/1</a></p>
-</blockquote>
-<blockquote>
-<p><strong>内网大牛的学习历程</strong></p>
-<p><a href="https://github.com/klionsec/klionsec.github.io" target="_blank" rel="noopener">https://github.com/klionsec/klionsec.github.io</a></p>
-</blockquote>
-<blockquote>
-<p><strong>从零开始内网渗透学习</strong></p>
-<p><a href="https://github.com/l3m0n/pentest_study" target="_blank" rel="noopener">https://github.com/l3m0n/pentest_study</a></p>
-</blockquote>
-<blockquote>
-<p><strong>内网渗透 TIPS</strong></p>
-<p><a href="https://github.com/Ridter/Intranet_Penetration_Tips" target="_blank" rel="noopener">https://github.com/Ridter/Intranet_Penetration_Tips</a></p>
-</blockquote>
+<pre><code>requests==2.22.0
+coloredlogs==10.0
+ipip-datx==0.4.0</code></pre><pre><code class="python">~ python fofa_dump.py
+usage: fofa_dump.py [-h] [-q FOFA_SQL] [-r FILE_PATH] [-s SIZE] [-f FIELDS]
+                    [-l FULL]
 
-        </article>
-        
-        
+FOFA 数据下载工具
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q FOFA_SQL, --fofa_sql FOFA_SQL
+                        FOFA 查询语句
+  -r FILE_PATH, --file_path FILE_PATH
+                        批量查询 FOFA 语句,txt文本
+  -s SIZE, --size SIZE  每页数量，默认为 10000
+  -f FIELDS, --fields FIELDS
+                        字段，默认为ip,host,port,protocol,country,region,city,title,
+                        domain,latitude,longitude
+  -l FULL, --full FULL  是否为获取历史数据，默认为False
+  -c count,--count      测试语句是否超过10000</code></pre>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>使用 fofa-dump 进行下载 Solr 数据：</p>
+<pre><code class="python">python fofa_dump.py -q &#39;app=&quot;Solr&quot;&#39;</code></pre>
+<h2 id="改编后："><a href="#改编后：" class="headerlink" title="改编后："></a>改编后：</h2><p>不要使用-p，传参容易出错</p>
+<p>使用：(select.txt为查询语法)</p>
+<pre><code class="python">python3 fofa_dump.py -r select.txt</code></pre>
+<pre><code class="python"># 返回语句查询到的结果的数量
+# api单次查询超过10000会扣F币
+# 用after和before时间限制条件
+# after是&gt;=   before是&lt;
+# app=&quot;mongodb&quot; &amp;&amp; after=&quot;2020-05&quot; &amp;&amp; before=&quot;2020-06&quot; &amp;&amp; country=&quot;US&quot;
+# 这个语句查询2020年5月1日到2020年5月30日的结果
+python3 fofa_dump.py -c select.txt</code></pre>
+<h2 id="改编后完整脚本："><a href="#改编后完整脚本：" class="headerlink" title="改编后完整脚本："></a>改编后完整脚本：</h2><pre><code class="python">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2019/02/28
+# @Author  : r4v3zn
+import sys
+import requests
+import sys
+import time
+import json
+import base64
+import traceback
+import os
+import argparse
+import csv
+# 禁用安全请求警告
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+import coloredlogs,logging
+logger = logging.getLogger(os.path.basename(__file__))
+coloredlogs.install(level=&#39;INFO&#39;,milliseconds=True,fmt=&#39;[%(asctime)s] :%(levelname)s: %(message)s&#39;)
+
+import datx
+c = datx.City(&#39;mydata4vipday3.datx&#39;)
+# FOFA 用户名
+fofa_name = &#39;&#39;
+# FOFA 用户key
+fofa_key = &#39;&#39;
+session = requests.session()
+# 请求头
+headers = {
+    &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
+    &#39;User-Agent&#39;:&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36&#39;
+}
+
+&#39;&#39;&#39;
+提取ip位置信息
+@param ip ip
+&#39;&#39;&#39;
+def get_ip_info(ip):
+    try:
+        ip_info = c.find(ip)
+        country_name = ip_info[0]
+        region_name = ip_info[1]
+        city_name = ip_info[2]
+        isp_domain = ip_info[4]
+    except Exception as e:
+        return [ip,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;]
+    return [ip,country_name,region_name,city_name,isp_domain]
+
+&#39;&#39;&#39;
+请求中心，控制程序所有HTTP请求，如果请求发生错误进行尝试再次连接
+@param url 请求连接
+@return 请求响应结果
+&#39;&#39;&#39;
+def fofa_requests(url):
+    rs_content = &#39;&#39;
+    error_content = &#39;&#39;
+    while True:
+        try:
+            logger.debug(url)
+            rs = session.get(url, verify=False,headers=headers)
+            rs_text = rs.text
+            error_content = rs_text
+            results = json.loads(rs_text)
+            error = results[&#39;error&#39;]
+            if error:
+                errmsg = results[&#39;errmsg&#39;]
+                if &#39;401 Unauthorized&#39; in errmsg:
+                    info = u&#39;fofa 错误: 用户名或API 无效！&#39;
+                    logger.error(info)
+                    break
+                else:
+                    info = u&#39;fofa 错误:&#39;+errmsg+u&#39; 休眠30s&#39;
+                    logger.error(info)
+                    time.sleep(30)
+            else:
+                rs_content = results
+                break
+        except Exception as e:
+            logger.error(error_content)
+            logger.error(u&#39;fofa 错误:&#39;+str(e.message)+u&#39; 休眠30s&#39;)
+            time.sleep(30)
+    return rs_content
+
+&#39;&#39;&#39;
+文件存储
+:param fields_list 字段名称
+:param data_list 数据内容信息
+:param csv_writer csv对象
+:param fofa_sql fofa查询语句
+&#39;&#39;&#39;
+def save_file(fields_list,data_list,csv_writer,fofa_sql):
+    ip_index = -1
+    country_index = -1
+    region_index = -1
+    city_index = -1
+    for index,field_name in enumerate(fields_list):
+        if &#39;ip&#39; == field_name and ip_index == -1:
+            ip_index = index
+        elif &#39;country&#39; == field_name and country_index == -1:
+            country_index = index
+        elif &#39;region&#39; == field_name and region_index == -1:
+            region_index = index
+        elif &#39;city&#39; == field_name and city_index == -1:
+            city_index = index
+    if ip_index == -1:
+        return
+    for data in data_list:
+        if str == type(data):
+            tmp_data = [data]
+        else:
+            tmp_data = data
+        ip = data[ip_index]
+        ip_info = get_ip_info(ip)
+        if country_index != -1:
+            tmp_data[country_index] = ip_info[1]
+        if region_index != -1:
+            tmp_data[region_index] = ip_info[2]
+        if city_index != -1:
+            tmp_data[city_index] = ip_info[3]
+        tmp_data.append(fofa_sql)
+        if len(tmp_data) &gt; 0:
+            csv_writer.writerow(tmp_data)
+
+&#39;&#39;&#39;
+FOFA 数据内容保存
+:param fofa_sql fofa查询语句
+:param fields_list 字段名称
+:param page_size 每页数量
+:param full 是否为历史所有数据
+:param csv_writer csv对象
+&#39;&#39;&#39;
+def dump_fofa_data(fofa_sql,fields_list,page_size,full,csv_writer):
+    current_page = 1
+    total_page = 1
+    total_size = 0
+    while current_page &lt;= total_page:
+        base64_str = base64.b64encode(fofa_sql.encode())
+        api_url = &#39;http://fofa.so/api/v1/search/all?email=%s&amp;key=%s&amp;fields=%s&amp;size=%s&amp;page=%s&amp;qbase64=%s&amp;full=%s&#39;%(fofa_name,fofa_key,&#39;,&#39;.join(fields_list),str(page_size),str(current_page),str(base64_str)[2:-1],str(full))
+        # print(api_url)
+        rs = fofa_requests(api_url)
+        if not rs:
+            break
+        total_size = rs[&#39;size&#39;]
+        results = rs[&#39;results&#39;]
+        total_page = int(total_size / page_size) + 1 if total_size % page_size != 0 else int(total_size / page_size)
+        #print(&quot;total_page:&quot;+str(total_page))
+
+        save_file(fields_list=fields_list,data_list=results,csv_writer=csv_writer,fofa_sql=fofa_sql)
+        logger.info(&#39;dump data fofa sql --&gt; %s ,page --&gt; %s/%s status --&gt; ok&#39;%(fofa_sql,current_page,total_page))
+        current_page += 1
+        #print(&quot;current_page:&quot;+str(current_page))
+
+&#39;&#39;&#39;
+FOFA 数据内容保存
+:param fofa_sql fofa查询语句
+:param fields_list 字段名称
+:param page_size 每页数量
+:param full 是否为历史所有数据
+&#39;&#39;&#39;
+def dump_main(fofa_sql_list,fields,page_size,full=False):
+    split_fields = list(fields.split(&#39;,&#39;))
+    fields_list = []
+    for field in split_fields:
+        if field in fields_list:
+            continue
+        fields_list.append(field)
+    fields_list.append(&#39;fofa_sql&#39;)
+    if &#39;ip&#39; not in fields_list:
+        fields_list.insert(0,&#39;ip&#39;)
+        fields = &#39;,&#39;.join(fields_list)
+    csv_file_name = &#39;%s.csv&#39;%(time.strftime(&#39;%Y%m%d%H%M%S&#39;,time.localtime(time.time())),)
+    logger.info(&#39;file save name --&gt; %s&#39;%(csv_file_name))
+    logger.info(&#39;dump data fields --&gt; [%s] ,page size --&gt; %s&#39;%(fields,page_size))
+    csv_file = open(csv_file_name,&#39;w&#39;,newline=&#39;&#39;)
+    csv_writer = csv.writer(csv_file)
+    csv_writer.writerow(fields_list)
+    for fofa_sql in fofa_sql_list:
+        logger.info(&#39;start dump data fofa sql --&gt; %s &#39;%(fofa_sql))
+        dump_fofa_data(fofa_sql=fofa_sql,fields_list=fields_list,page_size=page_size,full=full,csv_writer=csv_writer)
+        fofa_size(fofa_sql_count=fofa_sql,fields_list=fields_list,page_size=page_size,full=full)
+
+
+def size_main(fofa_sql_count_list,fields,page_size,full=False):
+    split_fields = list(fields.split(&#39;,&#39;))
+    fields_list = []
+    for field in split_fields:
+        if field in fields_list:
+            continue
+        fields_list.append(field)
+    fields_list.append(&#39;fofa_sql&#39;)
+    if &#39;ip&#39; not in fields_list:
+        fields_list.insert(0,&#39;ip&#39;)
+        fields = &#39;,&#39;.join(fields_list)
+    for fofa_sql_size in fofa_sql_count_list:
+        logger.info(&#39;start count data fofa sql --&gt; %s &#39;%(fofa_sql_size))
+        fofa_size(fofa_sql_count=fofa_sql_size,fields_list=fields_list,page_size=page_size,full=full)
+
+
+def fofa_size(fofa_sql_count,fields_list,page_size,full):
+    current_page = 1
+    total_page = 1
+    total_size = 0
+    base64_str = base64.b64encode(fofa_sql_count.encode())
+    api_url = &#39;http://fofa.so/api/v1/search/all?email=%s&amp;key=%s&amp;fields=%s&amp;size=%s&amp;page=%s&amp;qbase64=%s&amp;full=%s&#39;%(fofa_name,fofa_key,&#39;,&#39;.join(fields_list),str(page_size),str(current_page),str(base64_str)[2:-1],str(full))
+    rs = fofa_requests(api_url)
+    total_size = rs[&#39;size&#39;]
+    logger.info(&#39;count result fofa sql --&gt; %s &#39;%(total_size))
+    # print(&#39;结果数量：&#39;+str(total_size))
+
+if __name__ == &#39;__main__&#39;:
+    parser = argparse.ArgumentParser(description=&#39;FOFA 数据下载工具&#39;)
+    parser.add_argument(&#39;-q&#39;,&#39;--fofa_sql&#39;,help=&#39;FOFA 查询语句&#39;)
+    parser.add_argument(&#39;-r&#39;,&#39;--file_path&#39;,help=&#39;批量查询 FOFA 语句,txt文本&#39;)
+    parser.add_argument(&#39;-s&#39;,&#39;--size&#39;, help=&#39;每页数量，默认为 10000&#39;, type=int, default=10000)
+    parser.add_argument(&#39;-f&#39;,&#39;--fields&#39;, help=&#39;字段，默认为ip,host,port,protocol,country,region,city,title,domain,latitude,longitude&#39;,default=&#39;ip,host,port,protocol,country,region,city,title,domain,latitude,longitude&#39;)
+    parser.add_argument(&#39;-l&#39;,&#39;--full&#39;, help=&#39;是否为获取历史数据，默认为False&#39;,default=&#39;false&#39;)
+    parser.add_argument(&#39;-c&#39;,&#39;--count&#39;,help=&#39;测试语句是否超过10000&#39;)
+    args = parser.parse_args()
+    fofa_sql = args.fofa_sql
+
+    #fofa_sql = &#39;app=&quot;mongodb&quot; &amp;&amp; after=&quot;2020-05-01&quot; &amp;&amp; before=&quot;2020-06-01&quot; &amp;&amp; country=&quot;US&quot;&#39;
+    fields = args.fields
+    file_path = args.file_path
+    page_size = args.size
+    count=args.count
+    full = str(args.full)
+    fofa_sql_count_list=[]
+    if count:
+        # test sise
+        with open(count,&#39;r&#39;) as f:
+            for fofa_sql in f.readlines():
+                fofa_sql_count = fofa_sql.strip()
+                fofa_sql_count_list.append(fofa_sql_count)
+
+        size_main(fofa_sql_count_list=fofa_sql_count_list,fields=fields,page_size=page_size,full=full)
+
+
+    if not file_path and not fofa_sql and not count:
+        parser.print_help()
+        sys.exit(1)
+    fofa_sql_list = []
+
+    if fofa_sql:
+        fofa_sql_list.append(fofa_sql)
+
+    elif file_path:
+        with open(file_path,&#39;r&#39;) as f:
+            for fofa_sql in f.readlines():
+                fofa_sql = fofa_sql.strip()
+                fofa_sql_list.append(fofa_sql)
+        dump_main(fofa_sql_list=fofa_sql_list,fields=fields,full=full,page_size=page_size)</code></pre>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -531,11 +809,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
