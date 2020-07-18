@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python3获取PDF图片与文字 | Knsec         |       博观而约取 - 厚积而薄发</title>
-  <meta name="keywords" content=" python3 ">
-  <meta name="description" content="python3获取PDF图片与文字 | Knsec         |       博观而约取 - 厚积而薄发">
+  <title>Win暴力注册表劫持后门 | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <meta name="keywords" content=" windows , 注册表 , 后门 ">
+  <meta name="description" content="Win暴力注册表劫持后门 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="sethc注册表劫持注：此方法很老套，并且动静很大这里只作为一个记录与思路拓展  进程名称： sethc.exe 描述：Windows的粘滞键。是按5下shift后，windows就执行了system32下的sethc.exe。 它本来是为不方便按组合 键的人设计的。 位置：c:\windows\system32\sethc.exe 信息来自：百度百科   regini.exe是Windows N">
 <meta property="og:type" content="article">
@@ -461,9 +461,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-python3获取PDF图片与文字" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Win暴力注册表劫持后门" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python3获取PDF图片与文字</h1>
+        <h1 class="article-title">Win暴力注册表劫持后门</h1>
     
     <div class="article-meta">
         
@@ -473,7 +473,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="脚本">脚本</a>
+            <a  data-rel="手法技巧">手法技巧</a>
             
         </span>
         
@@ -481,19 +481,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">python3</a>
+            <a class="color3">windows</a>
+            
+            <a class="color4">注册表</a>
+            
+            <a class="color3">后门</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-17 20:26:59'>2020-07-17 20:25</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-18 14:31:37'>2020-07-18 13:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:355</span>
+        <span>字数:862</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -512,7 +516,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sethc注册表劫持"><span class="toc-text">sethc注册表劫持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顺带一提"><span class="toc-text">顺带一提</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -528,85 +532,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code class="python">#!/usr/bin/env python3
-# pip3 install pymupdf
-# Author: taills
-import fitz
-import sys
-import re
-import os
+        <h2 id="sethc注册表劫持"><a href="#sethc注册表劫持" class="headerlink" title="sethc注册表劫持"></a>sethc注册表劫持</h2><p><strong>注：此方法很老套，并且动静很大这里只作为一个记录与思路拓展</strong></p>
+<blockquote>
+<p>进程名称： sethc.exe</p>
+<p>描述：Windows的粘滞键。是按5下shift后，windows就执行了system32下的sethc.exe。</p>
+<p>它本来是为不方便按组合 键的人设计的。</p>
+<p>位置：c:\windows\system32\sethc.exe</p>
+<p>信息来自：百度百科</p>
+</blockquote>
+<blockquote>
+<p>regini.exe是Windows NT框架中一个实用命令行工具，可以通过命令行或脚本进行创建、修改、删除注册表项值、注册表项权限。</p>
+</blockquote>
+<blockquote>
+<p>将以下内容保存为regeini.ini，然后使用命令<code>regini regini.ini</code>进行修改注册表</p>
+<p>说明：</p>
+<p>1、当系统或用户运行sethc.exe时，实际是运行注册表指定的程序</p>
+<p>2、并为这个表项设置权限为Administrators用户组和System为只读权限</p>
+</blockquote>
+<pre><code class="ini">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe[2 19]
+&quot;debugger&quot;=&quot;C:\\WINDOWS\\system32\\Setup\\setup.cmd&quot;</code></pre>
+<pre><code class="ini"># 权限表
 
-
-def pdf2pic(pdf_path, output_path):
-    # 使用正则表达式来查找图片
-    checkXO = r&quot;/Type(?= */XObject)&quot; 
-    checkIM = r&quot;/Subtype(?= */Image)&quot; 
-
-    # 打开pdf
-    doc = fitz.open(pdf_path)
-    # 图片计数
-    imgcount = 0
-    lenXREF = doc._getXrefLength()
-
-    # 打印PDF的信息
-    print(&quot;文件名:{}, 页数: {}, 对象: {}&quot;.format(pdf_path, len(doc), lenXREF - 1))
-
-    # 遍历每一个对象
-    for i in range(1, lenXREF):
-        # 定义对象字符串
-        text = doc._getXrefString(i)
-
-        isXObject = re.search(checkXO, text)
-        # 使用正则表达式查看是否是图片
-        isImage = re.search(checkIM, text)
-        # 如果不是对象也不是图片，则continue
-        if not isXObject:
-            continue
-        if not isImage:
-            continue
-        imgcount += 1
-        # 根据索引生成图像
-        pix = fitz.Pixmap(doc, i)
-        # 根据pdf的路径生成图片的名称
-
-        new_name = &quot;%02d.png&quot; %imgcount
-
-        # 如果pix.n&lt;5,可以直接存为PNG
-        if pix.n &lt; 5:
-            pix.writePNG(os.path.join(output_path, new_name))
-        # 否则先转换CMYK
-        else:
-            pix0 = fitz.Pixmap(fitz.csRGB, pix)
-            pix0.writePNG(os.path.join(output_path, new_name))
-            pix0 = None
-        # 释放资源
-        pix = None
-        print(&quot;提取了{}张图片&quot;.format(imgcount))
-
-def pdf2txt(pdf_path,output_path):
-    &#39;&#39;&#39;
-    从PDF中获取文本
-    &#39;&#39;&#39;
-    doc = fitz.open(pdf_path)
-    output_file = output_path + os.sep + &#39;output.txt&#39;
-    print(output_file)
-    out = open(output_file,&#39;w&#39;)
-    for d in doc:
-        out.write(d.getText(&quot;text&quot;)) # 可选 html / xml /json  等
-    out.close()
-
-if __name__==&#39;__main__&#39;:
-    # pdf路径
-    if len(sys.argv) == 1:
-        exit(-1)
-    pdf_path = sys.argv[1]
-    output_path = os.getcwd() + os.sep + os.path.basename(pdf_path)
-    # 不存在则创建
-    if not os.path.exists(output_path):
-        os.mkdir(output_path)
-
-    pdf2txt(pdf_path,output_path)
-    pdf2pic(pdf_path,output_path)</code></pre>
+1  - Administrators 完全访问
+2  - Administrators 只读访问
+3  - Administrators 读和写入访问
+4  - Administrators 读、写入、删除访问
+5  - Creator 完全访问
+6  - Creator 读和写入访问
+7  - everyone 完全访问
+8  - everyone 只读访问
+9  - everyone 读和写入访问
+10 - everyone 读、写入、删除访问
+11 - Power Users 完全访问
+12 - Power Users 读和写入访问
+13 - Power Users 读、写入、删除访问
+14 - System Operators 完全访问
+15 - System Operators 读和写入访问
+16 - System Operators 读、写入、删除访问
+17 - System 完全访问
+18 - System 读和写入访问
+19 - System 只读访问
+20 - Administrators 读、写、执行访问
+21 - Interactive User 完全访问
+22 - Interactive User 读和写入访问
+23 - Interactive User 读、写入、删除访问</code></pre>
+<p>当然，除了<code>sethc.exe</code>之外还有很多可以利用。</p>
+<p><img src="/../images/image-20200718141303915.png" alt="登录界面"></p>
+<p>只要找到相对应的文件，在注册表对其进行劫持即可。</p>
+<h2 id="顺带一提"><a href="#顺带一提" class="headerlink" title="顺带一提"></a>顺带一提</h2><blockquote>
+<p>dllcache大约有350MB，2000左右个文件，大部分是动态链接库（.dll ）和可执行文件（.exe ），是个系统隐藏文件夹。 dllcache作为备份是在使用“系统文件检测”时发挥作用的，它实际上“准备”了你可能会用到的所有重要系统文件，是一个备用的系统文件库。</p>
+<p>要说dllcache就不得不说下windows的文件保护机制。很多诸如动态链接库（.dll ）和可执行文件（.exe ）之类的文件对于系统的稳定运作是非常重要的，如果这些文件被不小心删了或替换了，就有可能造成系统的不稳定，甚至系统崩溃。虽然我们一般不会有意去删除或替换这些文件，但实际上装软件的时候，特别是一些版本老的软件的时候，覆盖一些共享的系统文件是常有的事。</p>
+<p>针对这一点，windows就有一个文件保护的后台服务。默认情况下，该服务一直处于启用状态，监视着所有受保护的系统文件，如果发现替换或移动受保护的系统文件企图，它能直接阻止。当然windows并不阻止所有这样的企图，它允许有windows数字签名文件替换现有文件，这样你的系统才可以更新和升级。</p>
+</blockquote>
+<pre><code class="ini">%SystemRoot%\system32\Dllcache\</code></pre>
+<p>也就是说，当我们替换了system32目录下的文件时，系统会从备份把我们恶意放入的sethc.exe替换成原版，这个需要注意。</p>
 
       
        

@@ -6,18 +6,22 @@
   <meta name="keywords" content=" Linux , 渗透技巧 ">
   <meta name="description" content="Linux利用别名抓取账户切换时密码 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="需要管理员权限reg add &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender&quot; &#x2F;v &quot;DisableAntiSpyware&quot; &#x2F;d 1 &#x2F;t REG_DWORD">
+<meta name="description" content="sethc注册表劫持注：此方法很老套，并且动静很大这里只作为一个记录与思路拓展  进程名称： sethc.exe 描述：Windows的粘滞键。是按5下shift后，windows就执行了system32下的sethc.exe。 它本来是为不方便按组合 键的人设计的。 位置：c:\windows\system32\sethc.exe 信息来自：百度百科   regini.exe是Windows N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过注册表关闭Windows_Defender">
-<meta property="og:url" content="http://knsec.github.io/2020/07/18/%E9%80%9A%E8%BF%87%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%85%B3%E9%97%ADWindows-Defender/index.html">
+<meta property="og:title" content="Win暴力注册表劫持后门">
+<meta property="og:url" content="http://knsec.github.io/2020/07/18/Win%E6%9A%B4%E5%8A%9B%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%8A%AB%E6%8C%81%E5%90%8E%E9%97%A8/index.html">
 <meta property="og:site_name" content="Knsec         |       博观而约取 - 厚积而薄发">
-<meta property="og:description" content="需要管理员权限reg add &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender&quot; &#x2F;v &quot;DisableAntiSpyware&quot; &#x2F;d 1 &#x2F;t REG_DWORD">
+<meta property="og:description" content="sethc注册表劫持注：此方法很老套，并且动静很大这里只作为一个记录与思路拓展  进程名称： sethc.exe 描述：Windows的粘滞键。是按5下shift后，windows就执行了system32下的sethc.exe。 它本来是为不方便按组合 键的人设计的。 位置：c:\windows\system32\sethc.exe 信息来自：百度百科   regini.exe是Windows N">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-18T04:57:43.000Z">
-<meta property="article:modified_time" content="2020-07-18T05:04:20.961Z">
+<meta property="og:image" content="http://knsec.github.io/images/image-20200718141303915.png">
+<meta property="article:published_time" content="2020-07-18T05:14:19.000Z">
+<meta property="article:modified_time" content="2020-07-18T06:31:37.644Z">
 <meta property="article:author" content="Knsec">
 <meta property="article:tag" content="windows">
+<meta property="article:tag" content="注册表">
+<meta property="article:tag" content="后门">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://knsec.github.io/images/image-20200718141303915.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -113,7 +117,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(15)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(16)</small></div></li>
     
         
             
@@ -133,7 +137,7 @@
     
         
             
-            <li><div data-rel="手法技巧">手法技巧<small>(2)</small></div>
+            <li><div data-rel="手法技巧">手法技巧<small>(3)</small></div>
                 
             </li>
             
@@ -181,8 +185,8 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="15">
-<input type="hidden" id="yelog_site_word_count" value="6k">
+<input type="hidden" id="yelog_site_posts_number" value="16">
+<input type="hidden" id="yelog_site_word_count" value="6.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -274,6 +278,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>后门</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>域数据库</a>
             </li>
         
@@ -287,6 +295,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>抓取密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册表</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -313,6 +325,14 @@
         </a>
         
         <a  class="全部文章 手法技巧 "
+           href="/2020/07/18/Win%E6%9A%B4%E5%8A%9B%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%8A%AB%E6%8C%81%E5%90%8E%E9%97%A8/"
+           data-tag="windows,注册表,后门"
+           data-author="" >
+            <span class="post-title" title="Win暴力注册表劫持后门">Win暴力注册表劫持后门</span>
+            <span class="post-date" title="2020-07-18 13:14:19">2020/07/18</span>
+        </a>
+        
+        <a  class="全部文章 手法技巧 "
            href="/2020/07/18/%E9%80%9A%E8%BF%87%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%85%B3%E9%97%ADWindows-Defender/"
            data-tag="windows"
            data-author="" >
@@ -330,7 +350,7 @@
         
         <a  class="全部文章 暂未公开 "
            href="/2020/07/17/windget%E8%8E%B7%E5%8F%96win%E5%AF%86%E7%A0%81%E5%85%8D%E6%9D%80/"
-           data-tag="工具,windows,抓取密码"
+           data-tag="windows,工具,抓取密码"
            data-author="" >
             <span class="post-title" title="windget获取win密码免杀">windget获取win密码免杀</span>
             <span class="post-date" title="2020-07-17 21:04:56">2020/07/17</span>
@@ -346,7 +366,7 @@
         
         <a  class="全部文章 暂未公开 "
            href="/2020/07/17/hunter%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"
-           data-tag="工具,windows"
+           data-tag="windows,工具"
            data-author="" >
             <span class="post-title" title="hunter信息收集">hunter信息收集</span>
             <span class="post-date" title="2020-07-17 20:30:40">2020/07/17</span>
