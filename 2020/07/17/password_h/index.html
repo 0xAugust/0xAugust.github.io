@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python3获取PDF图片与文字 | Knsec         |       博观而约取 - 厚积而薄发</title>
-  <meta name="keywords" content=" python3 ">
-  <meta name="description" content="python3获取PDF图片与文字 | Knsec         |       博观而约取 - 厚积而薄发">
+  <title>password_h | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <meta name="keywords" content=" 工具 , windows ">
+  <meta name="description" content="password_h | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="按F12，选择“HackBar”，此时提示输入License   复制ID，在此目录下寻找与ID相同的文件夹 C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Extensions   function disable_hackbar(message&#x3D;null) {     $(&#39;#alert-license&#39;">
 <meta property="og:type" content="article">
@@ -472,9 +472,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-python3获取PDF图片与文字" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-password_h" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python3获取PDF图片与文字</h1>
+        <h1 class="article-title">password_h</h1>
     
     <div class="article-meta">
         
@@ -484,7 +484,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="脚本">脚本</a>
+            <a  data-rel="暂未公开">暂未公开</a>
             
         </span>
         
@@ -492,19 +492,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">python3</a>
+            <a class="color3">工具</a>
+            
+            <a class="color3">windows</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-17 20:26:59'>2020-07-17 20:25</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-15 00:08:55'>2020-07-17 20:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:355</span>
+        <span>字数:15</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -539,86 +541,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code class="python">#!/usr/bin/env python3
-# pip3 install pymupdf
-# Author: taills
-import fitz
-import sys
-import re
-import os
-
-
-def pdf2pic(pdf_path, output_path):
-    # 使用正则表达式来查找图片
-    checkXO = r&quot;/Type(?= */XObject)&quot; 
-    checkIM = r&quot;/Subtype(?= */Image)&quot; 
-
-    # 打开pdf
-    doc = fitz.open(pdf_path)
-    # 图片计数
-    imgcount = 0
-    lenXREF = doc._getXrefLength()
-
-    # 打印PDF的信息
-    print(&quot;文件名:{}, 页数: {}, 对象: {}&quot;.format(pdf_path, len(doc), lenXREF - 1))
-
-    # 遍历每一个对象
-    for i in range(1, lenXREF):
-        # 定义对象字符串
-        text = doc._getXrefString(i)
-
-        isXObject = re.search(checkXO, text)
-        # 使用正则表达式查看是否是图片
-        isImage = re.search(checkIM, text)
-        # 如果不是对象也不是图片，则continue
-        if not isXObject:
-            continue
-        if not isImage:
-            continue
-        imgcount += 1
-        # 根据索引生成图像
-        pix = fitz.Pixmap(doc, i)
-        # 根据pdf的路径生成图片的名称
-
-        new_name = &quot;%02d.png&quot; %imgcount
-
-        # 如果pix.n&lt;5,可以直接存为PNG
-        if pix.n &lt; 5:
-            pix.writePNG(os.path.join(output_path, new_name))
-        # 否则先转换CMYK
-        else:
-            pix0 = fitz.Pixmap(fitz.csRGB, pix)
-            pix0.writePNG(os.path.join(output_path, new_name))
-            pix0 = None
-        # 释放资源
-        pix = None
-        print(&quot;提取了{}张图片&quot;.format(imgcount))
-
-def pdf2txt(pdf_path,output_path):
-    &#39;&#39;&#39;
-    从PDF中获取文本
-    &#39;&#39;&#39;
-    doc = fitz.open(pdf_path)
-    output_file = output_path + os.sep + &#39;output.txt&#39;
-    print(output_file)
-    out = open(output_file,&#39;w&#39;)
-    for d in doc:
-        out.write(d.getText(&quot;text&quot;)) # 可选 html / xml /json  等
-    out.close()
-
-if __name__==&#39;__main__&#39;:
-    # pdf路径
-    if len(sys.argv) == 1:
-        exit(-1)
-    pdf_path = sys.argv[1]
-    output_path = os.getcwd() + os.sep + os.path.basename(pdf_path)
-    # 不存在则创建
-    if not os.path.exists(output_path):
-        os.mkdir(output_path)
-
-    pdf2txt(pdf_path,output_path)
-    pdf2pic(pdf_path,output_path)</code></pre>
-
+        <div id="hexo-blog-encrypt" data-wpm="密码错误，无法查看." data-whm="文章不能被校验, 不过还是能看看解密后的内容.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">此为不公开文章，请输入密码查看.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="44a4fbc7c4eb23b137ea7deb4a394e6227aeef87ebb4c025a1b3565d9dbbb9a2">957b6b461960c0a311a082a77f9c2ea790434c2a9b4931abef077e668e026b975b04ceccc334fe52b9545967a3e72c7eeefacf8026746666c9d1ddfef2b92245329b3835e385406479ad3958a5280230b19cebcfeffe54cfdab964e96142808a9a698d869c4ad5d7f59910dee1356efb5b26c9e4952ffbe05be5609d5921522e1e4cd1c0c129be5c5f151ec128bbdbe6775cf27c00b5efc1c81cf9e52f97bcb4242bbea89e410ab258a4e9b15065afadc71b7e2e1d5de02925be12b1fa7a28fb33a30bf9fe74d1a7612ec9ee2ca7ee9939cc562ef1b9ff0c0ba74d83e34b91adf73023eab50b16cb78e02aac61c31c262c153fe4189d7968bd9a2a2b085c3931ec8dca49e16878bc9cb7d7428f7366d595ca92383c1698fe3484facc97db6b4d448356455ef83b1a944ff1a6cce6b5a16da4039417df569219033053429ac08f804f105d5fd40c451b609ce374dfccda6e66eae34a7075eeb7c18a9620544b712ca0dc15f0b806a4507da08b8d6584f3109f05797cc684e3ed0f5cf65043114327415a7fc8d64536f16aea38db6385435a0aa1248d84b7a927a0611afca601112c1878e8a2e67ccb3e77c3dfcb322386431545ad6f512e681d948bec0aceaa328e1e6f7239c8c8b9b361dc181879dcd402aa760f2bfdb38cce504e8d8efb369f34cf943793dadadd74db43563985f3670abef4ac6829e394af07d479260d9ec8e313fdf6bfc7c4c6e6a0dcd10eaa42e5ff46260d800705b29954e275b533c557a2bc46ddf3ca81613f48f1839abc8d6d6fac231bad8925a1cd78beb1e2ff367287384e4a955cf3794ad5d34327258c31c59dd154c5fb567a4a695ca32937f43f017eebb21e76f21a90bc11bfd276d4680ac996fb4b946b136786fe5fa9a2a1b94fed9d218903fcfe9905fdc73a24f9da87cf625d79a647d0c10c6cb961cb4064c7bbba10b110a6366342015bd75817dca1835bac97117172949632065d0c14865e61447903cd1e24c914c677007f1ea8188bb1675de900bae04e28800bc0760a0c18f51866dc19987c8219d7d6766cefbbc1e5f95dc9b691eec6edc7e0efe1849ff083e2c1fa6e7ce929b0467251821c06612715c49eee52c4d8ff125f11d92b87d49782bb9eeab160043cd6714b603dc656f577d01affa42b080994fbdddbcd4ed5168be877a3aceacf73c3869e3617f0a39253ab5f2428a4b20f5ae8f3141ac24b4d5a7c8e0fc5cc1c4cf07852220171eb14ac7e2bfe8923464fd216b644e256dccc8ca4193e70f43e2efd8cf50aa554fc4772e9ba362e9ed4b0851e45e450032899b4d3dd84d0f82bec97b33cc47b972e135034056626ede09310c6949aa2ab00198e1bef778a006bcd00b521cd2ccd98e1bc98a432335ca159785a248af86b4f72c27cb6c98f4c44cd7a354cd46dfe1619321fe2e9b562156369e5e8664deed6ec9e4fcdac749b572f844b1a0b26f68bf97e267ef2d7a3c777c8342bfaa2</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
        
     </div>
