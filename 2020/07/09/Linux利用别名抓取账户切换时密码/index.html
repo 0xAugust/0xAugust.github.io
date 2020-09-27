@@ -6,24 +6,15 @@
   <meta name="keywords" content=" Linux , 渗透技巧 ">
   <meta name="description" content="Linux利用别名抓取账户切换时密码 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="漏洞描述 2020年08月12日， 360CERT监测发现Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏洞评分：10分。 攻击者通过NetLogon（MS-NRPC），建立与域控间易受攻击的安全通道时，可利用此漏洞获取域管访问权限。成功利用此漏洞的攻击者可以在该网络中的设备上运行经特殊设计的应用程序。影响版本 W">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2020-1472复现">
-<meta property="og:url" content="http://knsec.github.io/2020/09/16/CVE-2020-1472%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:title" content="管理员利用tscon无密码切换用户">
+<meta property="og:url" content="http://knsec.github.io/2020/09/27/%E7%AE%A1%E7%90%86%E5%91%98%E5%88%A9%E7%94%A8tscon%E6%97%A0%E5%AF%86%E7%A0%81%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7/index.html">
 <meta property="og:site_name" content="Knsec         |       博观而约取 - 厚积而薄发">
-<meta property="og:description" content="漏洞描述 2020年08月12日， 360CERT监测发现Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏洞评分：10分。 攻击者通过NetLogon（MS-NRPC），建立与域控间易受攻击的安全通道时，可利用此漏洞获取域管访问权限。成功利用此漏洞的攻击者可以在该网络中的设备上运行经特殊设计的应用程序。影响版本 W">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://knsec.github.io/images/image-20200916211223363.png">
-<meta property="article:published_time" content="2020-09-16T15:36:00.000Z">
-<meta property="article:modified_time" content="2020-09-17T06:09:10.412Z">
+<meta property="article:published_time" content="2020-09-27T13:02:04.000Z">
+<meta property="article:modified_time" content="2020-09-27T13:02:04.323Z">
 <meta property="article:author" content="Knsec">
-<meta property="article:tag" content="漏洞复现">
-<meta property="article:tag" content="DC">
-<meta property="article:tag" content="LADP">
-<meta property="article:tag" content="389">
-<meta property="article:tag" content="内网">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://knsec.github.io/images/image-20200916211223363.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -119,7 +110,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(20)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(21)</small></div></li>
     
         
             
@@ -187,7 +178,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_posts_number" value="21">
 <input type="hidden" id="yelog_site_word_count" value="10k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -336,6 +327,14 @@
            data-author="" >
             <span class="post-title" title="Windows认证学习[持续更新]">Windows认证学习[持续更新]</span>
             <span class="post-date" title="2020-07-17 16:41:20">2020/07/17</span>
+        </a>
+        
+        <a  class="全部文章 "
+           href="/2020/09/27/%E7%AE%A1%E7%90%86%E5%91%98%E5%88%A9%E7%94%A8tscon%E6%97%A0%E5%AF%86%E7%A0%81%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="管理员利用tscon无密码切换用户">管理员利用tscon无密码切换用户</span>
+            <span class="post-date" title="2020-09-27 21:02:04">2020/09/27</span>
         </a>
         
         <a  class="全部文章 漏洞复现 "

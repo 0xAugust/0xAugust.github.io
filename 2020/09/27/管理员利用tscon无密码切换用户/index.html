@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>win利用pwdump7导账户密码 | Knsec         |       博观而约取 - 厚积而薄发</title>
-  <meta name="keywords" content=" tools ">
-  <meta name="description" content="win利用pwdump7导账户密码 | Knsec         |       博观而约取 - 厚积而薄发">
+  <title>管理员利用tscon无密码切换用户 | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="管理员利用tscon无密码切换用户 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="管理员利用tscon无密码切换用户">
@@ -506,39 +506,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-win利用pwdump7导账户密码" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-管理员利用tscon无密码切换用户" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">win利用pwdump7导账户密码</h1>
+        <h1 class="article-title">管理员利用tscon无密码切换用户</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="tools">tools</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color1">tools</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-17 18:37:05'>2020-07-17 18:25</time>
+            发布时间 : <time class="date" title='最后更新: 2020-09-27 21:02:04'>2020-09-27 21:02</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:198</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -557,7 +542,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用pwdump7导出windows的账户密码"><span class="toc-text">利用pwdump7导出windows的账户密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数说明"><span class="toc-text">参数说明</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -573,25 +558,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="利用pwdump7导出windows的账户密码"><a href="#利用pwdump7导出windows的账户密码" class="headerlink" title="利用pwdump7导出windows的账户密码"></a>利用pwdump7导出windows的账户密码</h2><blockquote>
-<p>解密地址：<a href="https://www.objectif-securite.ch/ophcrack" target="_blank" rel="noopener">https://www.objectif-securite.ch/ophcrack</a></p>
-<p>pwdump7下载地址：<a href="https://github.com/Knsec/Tools/blob/master/pwdump7.exe" target="_blank" rel="noopener">https://github.com/Knsec/Tools/blob/master/pwdump7.exe</a></p>
-</blockquote>
-<pre><code class="bash">pwdump7.exe &gt;&gt;1.txt</code></pre>
-<p><img src="/../images/image-20200717182742873.png" alt="导出来的账户密码"></p>
-<p><img src="/../images/image-20200717183344337.png" alt="利用ophcrack解密"></p>
-<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><pre><code class="bash">Pwdump7可以在CMD下提取出系统中的用户的密码hash (包括LM和NTLM),当然必须要有系统权限.提取出了HASH,再用ophcrack破出明文密码
-Pwdump v7.1 - raw password extractor
-Author: Andres Tarasco Acuna
-usage:
- pwdump7.exe                              (Dump system passwords)
- pwdump7.exe -s &lt;samfile&gt; &lt;systemfile&gt;    (Dump passwords from files)
- # 是从一个sam文件中提取hash,文件路径：%SystemRoot%\system32\config\sam
- pwdump7.exe -d &lt;filename&gt; [destionation] (Copy filename to destionation)
- # 是把一个文件复制到另一个位置,可以把进程正在占用的文件复制成功
- # 若提示缺少libeay32.dll,把此dll拷贝至：%SystemRoot%\system32\
- pwdump7.exe -h                           (Show this help)</code></pre>
-
+        
       
        
     </div>
