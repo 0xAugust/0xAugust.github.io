@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>python3获取证书信息 | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <title>1-两数之和 | Knsec         |       博观而约取 - 厚积而薄发</title>
   <meta name="keywords" content=" python3 ">
-  <meta name="description" content="python3获取证书信息 | Knsec         |       博观而约取 - 厚积而薄发">
+  <meta name="description" content="1-两数之和 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。  事例： 给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9  因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9 所以返回 [0, 1]解决t &#x3D; [2,">
 <meta property="og:type" content="article">
@@ -541,9 +541,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-python3获取证书信息" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-1-两数之和" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python3获取证书信息</h1>
+        <h1 class="article-title">1-两数之和</h1>
     
     <div class="article-meta">
         
@@ -553,7 +553,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="脚本">脚本</a>
+            <a  data-rel="力扣刷题">力扣刷题</a>
             
         </span>
         
@@ -568,12 +568,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-15 00:22:54'>2020-08-15 00:17</time>
+            发布时间 : <time class="date" title='最后更新: 2020-11-05 00:16:58'>2020-11-04 23:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:358</span>
+        <span>字数:330</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -592,7 +592,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本"><span class="toc-text">脚本</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新知识"><span class="toc-text">新知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-enumerare-函数"><span class="toc-text">1 enumerare()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象"><span class="toc-text">对象</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -608,89 +608,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>批量获取网页证书信息，结果写为result.csv</p>
-<pre><code>CN=commonName            通用名
-OU=organizationUnit        组织部门名
-O=organizationName        组织名
-L=localityName            地址
-S=stateName                州名
-C=country                城市名</code></pre><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><hr>
-<p>新建文本为test.txt，文本内容如下</p>
-<pre><code>1.1.1.1
-2.2.2.2
-3.3.3.3</code></pre><h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><hr>
-<pre><code class="python">import sys
-import ssl
-import socket
-import OpenSSL.crypto as crypto
-import csv
-result=[]
-# pip install pyOpenSSL
-def get_cer_info(domain):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(10)
-    s.connect((domain, 443))
-    context = ssl.create_default_context()
-    context.check_hostname = False
-    context.verify_mode = ssl.CERT_NONE
-    s = context.wrap_socket(s, server_hostname=domain)
-    cert = s.getpeercert(True)
-    x509 = crypto.load_certificate(crypto.FILETYPE_ASN1,cert)
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
+</blockquote>
+<p>事例：</p>
+<pre><code>给定 nums = [2, 7, 11, 15], target = 9
 
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]</code></pre><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><pre><code class="python">t = [2, 7, 11, 15]
+class Solution:
+    def twoSum(self,nums,target):
+        # 新建字典
+        nummap = {}
+        for index,num in enumerate(nums):
+            another_num = target - num
+            if another_num in nummap:
+                return [nummap[another_num], index]
+            nummap[num] = index
+        return None
 
-    if x509.get_subject().CN is None:
-        commonName = &#39;None&#39;
-    else:
-        commonName = x509.get_subject().CN
-
-    if x509.get_subject().OU is None:
-        organizationUnit = &#39;None&#39;
-    else:
-        organizationUnit = x509.get_subject().OU
-
-    if x509.get_subject().O is None:
-        organizationName = &#39;None&#39;
-    else:
-        organizationName = x509.get_subject().O
-
-    if x509.get_subject().L is None:
-        localityName = &#39;None&#39;
-
-    else:
-        localityName = x509.get_subject().L
-
-
-    if x509.get_subject().C is None:
-        country = &#39;None&#39;
-
-    else:
-        country = x509.get_subject().C
-
-    s.close()
-    result.append({
-        &quot;IP&quot;:domain,
-        &quot;commonName&quot;:commonName,
-        &quot;organizationUnit&quot;:organizationUnit,
-        &quot;organizationName&quot;:organizationName,
-        &quot;localityName&quot;:localityName,
-        &quot;country&quot;:country
-    })
-    print(&quot;get cer info:&quot;+domain)
 if __name__ == &quot;__main__&quot;:
+    print(Solution().twoSum(t,9))</code></pre>
+<h2 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h2><h3 id="1-enumerare-函数"><a href="#1-enumerare-函数" class="headerlink" title="1 enumerare()函数"></a>1 enumerare()函数</h3><blockquote>
+<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
+<p>Python 2.3. 以上版本可用，2.6 添加 start 参数。</p>
+</blockquote>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
+<p>enumerate(sequence, [start=0])</p>
+</blockquote>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><blockquote>
+<p>sequence – 一个序列、迭代器或其他支持迭代对象。</p>
+<p>start – 下标起始位置。</p>
+</blockquote>
+<pre><code class="python">t = [2, 7, 11, 15]
 
-    with open(&quot;test.txt&quot;,&#39;r&#39;) as a:
-        for line in a.readlines():
-            send = line.replace(&#39;\n&#39;,&#39;&#39;)
-            try:
-                get_cer_info(send)
-            except Exception as e:
-                pass
-    with open(&#39;result.csv&#39;, &#39;a&#39;,encoding=&#39;utf-8&#39;) as f:
-        csv_writer = csv.writer(f, dialect=&#39;excel&#39;)
-        csv_writer.writerow([&#39;IP&#39;,&#39;commonName&#39;, &#39;organizationUnit&#39;,&#39;organizationName&#39;,&#39;localityName&#39;,&#39;country&#39;])
-        for each in result:
-            csv_writer.writerow([each[&#39;IP&#39;],each[&#39;commonName&#39;], each[&#39;organizationUnit&#39;],each[&#39;organizationName&#39;],each[&#39;localityName&#39;],each[&#39;country&#39;]])
-</code></pre>
+for i in enumerate(t):
+    print(i)
+
+&#39;&#39;&#39;
+# 输出
+(0, 2)
+(1, 7)
+(2, 11)
+(3, 15)
+&#39;&#39;&#39;
+
+t = [2, 7, 11, 15]
+
+for i,k in enumerate(t):
+    print(str(i)+&#39;\t&#39;+str(k))
+&#39;&#39;&#39;
+# 输出
+0       2
+1       7
+2       11
+3       15
+&#39;&#39;&#39;</code></pre>
 
       
        
