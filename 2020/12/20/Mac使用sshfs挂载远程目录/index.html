@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Windows认证学习[持续更新] | Knsec         |       博观而约取 - 厚积而薄发</title>
-  <meta name="keywords" content=" 内网安全学习 ">
-  <meta name="description" content="Windows认证学习[持续更新] | Knsec         |       博观而约取 - 厚积而薄发">
+  <title>Mac使用sshfs挂载远程目录 | Knsec         |       博观而约取 - 厚积而薄发</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Mac使用sshfs挂载远程目录 | Knsec         |       博观而约取 - 厚积而薄发">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="sudo update_dyld_shared_cache 运行后不用理会错误，重启电脑即可">
 <meta property="og:type" content="article">
@@ -556,41 +556,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Windows认证学习[持续更新]" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mac使用sshfs挂载远程目录" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Windows认证学习[持续更新]</h1>
+        <h1 class="article-title">Mac使用sshfs挂载远程目录</h1>
     
     <div class="article-meta">
         
-        <span class="top"><a>置顶</a></span>
         
         
-        
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="内网安全">内网安全</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">内网安全学习</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-19 22:44:00'>2020-07-17 16:41</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-20 01:25:11'>2020-12-20 01:21</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:937</span>
+        <span>字数:39</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -609,7 +592,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-Windows本地认证"><span class="toc-text">0x00 Windows本地认证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-NTML（NT-LAN-Manager）-HASH与NTLM"><span class="toc-text">0x01 NTML（NT LAN Manager） HASH与NTLM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-LM-Hash"><span class="toc-text">0x02 LM Hash</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -625,48 +608,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>学习自倾旋的彻底理解Windows认证的议题：<a href="https://payloads.online/" target="_blank" rel="noopener">https://payloads.online/</a></p>
-<p>以下文章是根据文章及视频的学习记录</p>
-</blockquote>
-<h1 id="0x00-Windows本地认证"><a href="#0x00-Windows本地认证" class="headerlink" title="0x00 Windows本地认证"></a>0x00 Windows本地认证</h1><hr>
-<p>在windows登录时，操作系统会使用<font color='red'>用户输入的账户密码</font>与存储在本地的密码<font color='red'><strong>(SAM文件)</strong></font>去做对比。</p>
-<pre><code>%SystemRoot%\system32\config\sam</code></pre><p><img src="/../images/image-20200717165124371.png" alt="SAM文件属性"></p>
-<p><strong>需要注意的是，为了保证系统的安全性，Windows是不保存明文密码的，只保留密码的Hash。</strong></p>
-<blockquote>
-<p>Hash，一般翻译做散列、杂凑，或音译为<font color='red'>哈希</font>，是把任意长度的输入（又叫做预映射pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。         —-百度百科</p>
-</blockquote>
-<p><strong>注：如果被攻击者拿到SAM文件，即可破解系统密码</strong></p>
-<h2 id="0x01-NTML（NT-LAN-Manager）-HASH与NTLM"><a href="#0x01-NTML（NT-LAN-Manager）-HASH与NTLM" class="headerlink" title="0x01 NTML（NT LAN Manager） HASH与NTLM"></a>0x01 NTML（NT LAN Manager） HASH与NTLM</h2><hr>
-<blockquote>
-<p>早期SMB协议在网络上传输明文口令。后来出现 LAN Manager Challenge/Response验证机制，简称LM，它是如此简单以至很容易就被破解。微软提出了WindowsNT挑战/响应验证机制，称之为NTLM。已经有了更新的NTLM v2以及Kerberos验证体系。NTLM是windows早期安全协议，因向后兼容性而保留下来。NTLM是NT LAN Manager的缩写，即NT LAN管理器。          —-百度百科</p>
-</blockquote>
-<p>NTLM Hash是由<code>数字与字母组成的32位的值</code>并且是经过<code>hex、unicode、md4</code>进行三层加密所得。</p>
-<p><img src="/../images/%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="加密流程图"></p>
-<p>上一节说到，Windows系统本身是不存储明文密码的，所以在SAM文件里存储的是密码的Hash值，在我们登录系统所输入密码并按下登录后，系统会把我们输入的密码转换为Hash值，并与SAM里面的Hash值做对比。</p>
-<p><img src="/../images/%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="认证流程图"></p>
-<p>其中，NTLM与NTLM Hash之间的关系为：</p>
-<h2 id="0x02-LM-Hash"><a href="#0x02-LM-Hash" class="headerlink" title="0x02 LM Hash"></a>0x02 LM Hash</h2><hr>
-<p>LM Hash（基本淘汰）是NTLM协议的前身，它们两个虽然认证机制相同，但是它们的算法不同。</p>
-<p>可知LM协议认证过程中需要LM Hash作为根本凭证进行参与认证。下面大致看下流程</p>
-<pre><code>将所有小写字母转换为大写字母
-&gt;123ABC // 未达到7个字符
-• 将密码转化为16进制，分两组，填充为14个字符,空余位使用0x00字符填补
-• &gt;31323341424300000000000000
-• 将密码分割为两组7个字节的块
-• &gt;31323341424300 00000000000000 // 16进制
-• 将每组转化为比特流，不足56Bit则在左边加0
-• &gt;31323341424300 -&gt;(转换为二进制) 110001001100100011001101000001010000100100001100000000-&gt; (补 足56Bit) 00110001001100100011001101000001010000100100001100000000
-• 将比特流按照7比特一组，分出8组，末尾加0
-
-由于后者都为0，结果可想而知，那就都是0;
-• 将每组比特流转换为16进制作为被加密的值，使用DES加密，字符串 “KGS!@#$%”为Key(0x4B47532140232425)，得到8个结果 ，每个 结果转换为16进制。
-• -&gt; 00110000100110001000110001101000000101000001001000001100 00000000
-• -&gt;30988C6814120C00 -&gt; DES(30988C6814120C00) -&gt; 48-D7-EB-91- 2F-5E-69-7C
-• 由于我们的密码不超过7字节，所以后面的一半是固定的:
-• AA-D3-B4-35-B5-14-04-EE
-• 连接两个DES加密字符串。这是LM哈希。
-• 48-D7-EB-91-2F-5E-69-7C-AA-D3-B4-35-B5-14-04-EE</code></pre><p>此时可以看出这个算法的弱点在于DES算法的Key<strong>（KGS!@#$%）</strong>是固定的，如果攻击者拿到Key，就能解出明文。而且攻击者可以根据LM Hash的特性，能够判断用户密码是否≥7位。</p>
+        <pre><code class="bash">brew install sshfs
+sshfs root@Romote_IP:Romote_Path /Users/Knsec/Desktop/Romote_disk
+# sshfs &lt;远程用户名&gt;@&lt;远程主机地址&gt;:&lt;远程目录&gt;  &lt;本地目录&gt;</code></pre>
 
       
        
