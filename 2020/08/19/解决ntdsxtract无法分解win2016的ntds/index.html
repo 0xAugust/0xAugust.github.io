@@ -568,12 +568,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-01-03 20:24:02'>2020-08-19 23:28</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-05 22:11:56'>2020-08-19 23:28</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:183</span>
+        <span>字数:223</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -624,11 +624,11 @@ make install
 ldconfig</code></pre>
 <pre><code class="bash">esedbexport -m table ntds.dit # 分解数据库</code></pre>
 <h3 id="安装ntdsxtract"><a href="#安装ntdsxtract" class="headerlink" title="安装ntdsxtract"></a>安装ntdsxtract</h3><pre><code>python setup.py build &amp;&amp; python setup.py install</code></pre><h2 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h2><p>导出用户例子</p>
-<pre><code class="bash">python dsusers.py ../0/ntds.dit.export/datatable.3 ../0/ntds.dit.export/link_table.5 data --syshive ../0/SYSTEM --passwordhashes --pwdformat john --ntoutfile ./nthash.txt --lmoutfile ./lmhash.txt</code></pre>
-<p>导出计算机信息例子</p>
-<pre><code class="bash">python dscomputers.py ../0/ntds.dit.export/datatable.3 computer_out --csvoutfile domain_computers_info.csv</code></pre>
+<pre><code class="bash">python dsusers.py ../0/ntds.dit.export/datatable.4 ../0/ntds.dit.export/link_table.7 data --syshive ../0/SYSTEM --passwordhashes --passwordhistory --membership --pwdformat john --ntoutfile ./nthash.txt --lmoutfile ./lmhash.txt | tee domain_users_info.txt</code></pre>
+<p>导出计算机信息例子(dscomputer.py需改115行起全加上str()，不然会报错)</p>
+<pre><code class="bash">python dscomputers.py ../0/ntds.dit.export/datatable.4 --syshive ../0/SYSTEM computer_out --passwordhashes --passwordhistory --bitlocker --pwdformat john --csvoutfile domain_computers_info.csv --ntoutfile domain_computer_nthash.txt --lmoutfile domain_computer_lmhash.txt | tee domain_computers_info.txt</code></pre>
 <p>导出</p>
-<pre><code class="bash">python dsgroups.py ../0/ntds.dit.export/datatable.3 ../0/ntds.dit.export/link_table.5 groups_out --csvoutfile group.csv</code></pre>
+<pre><code class="bash">python dsgroups.py ../0/ntds.dit.export/datatable.4 ../0/ntds.dit.export/link_table.7 group_out --members --csvoutfile domain_groupinfo.csv | tee domain_groupinfo.txt</code></pre>
 
       
        
